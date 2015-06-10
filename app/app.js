@@ -1,7 +1,11 @@
-angular.module('app', ['ngRoute'])
+angular.module('app', [
+    'ngRoute',
+    'app.controllers'
+])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {
-            template: 'Home'
+            templateUrl: 'views/post.html',
+            controller: 'PostController'
         }).otherwise({
             redirectTo: '/'
         })

@@ -1,7 +1,7 @@
 <!doctype html>
 </body>
 </html>
-<html ng-app>
+<html ng-app="app">
     <head>
         <meta charset="UTF-8">
         <title>Test Blog</title>
@@ -9,11 +9,17 @@
     </head>
     <body>
 
-        {{ 5 + 5 }}
+
+        <div class="container">
+            <div ng-view></div>
+        </div>
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/angular.js"></script>
         <script src="js/angular-route.js"></script>
+        <script src="app/app.js"></script>
+        <script src="controllers.js"></script>
+
     </body>
 </html>
