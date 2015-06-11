@@ -1,7 +1,20 @@
 [
   {
-    "title" : "Test post",
+    "title" : "First post",
+    "excerpt": "TEST TEST TEST EXCERPT TEST TEST TEST TEST",
+    "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
+  },
+
+  {
+    "title" : "Second post",
+    "excerpt": "TEST TEST TEST EXCERPT TEST TEST TEST TEST",
+    "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
+  },
+
+  {
+    "title" : "Third post",
     "excerpt": "TEST TEST TEST EXCERPT TEST TEST TEST TEST",
     "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
   }
+
 ]

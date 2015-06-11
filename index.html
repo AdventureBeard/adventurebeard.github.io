@@ -7,11 +7,16 @@
         <title>Test Blog</title>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     </head>
-    <body>
+    <body style="padding-top: 30px">
 
 
         <div class="container">
+
+            <navigationbar></navigationbar>
             <div ng-view></div>
+
+
+
         </div>
 
         <script src="js/jquery.js"></script>
@@ -20,6 +25,7 @@
         <script src="js/angular-route.js"></script>
         <script src="app/app.js"></script>
         <script src="controllers.js"></script>
+        <script src="app/directives.js"></script>
 
     </body>
 </html>
