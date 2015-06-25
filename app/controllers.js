@@ -4,7 +4,6 @@ angular.module('app.controllers', [
 
 
     .controller('PostController', ['$scope', '$http', function($scope, $http) {
-        $scope.message = 'TEST TEST TEST';
         $http.get('data/posts.json').success(function(data) {
             $scope.posts = data;
         });
@@ -16,8 +15,7 @@ angular.module('app.controllers', [
         });
     }])
 
-    .controller('SinglePostController', ['$scope', '$http', '$routeParams', function($scope, $http,
-                                                                                 $routeParams) {
+    .controller('SinglePostController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
         $http.get('data/posts.json').success(function(data) {
             $scope.post = data[$routeParams.id];
         });
