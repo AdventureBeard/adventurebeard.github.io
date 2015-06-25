@@ -6,7 +6,7 @@ angular.module('app', [
 
         $routeProvider.when('/', {
             templateUrl: 'views/post.html',
-            controller: 'PostController'
+            controller: 'PostListController'
 
         }).when('/post/:id', {
             templateUrl: 'views/singlepost.html',
