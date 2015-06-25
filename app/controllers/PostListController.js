@@ -11,4 +11,8 @@
             $scope.posts = data;
         });
 
+        $scope.currentPage = 0;
+        $scope.pageSize = 5;
+
+
     }]);
