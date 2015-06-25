@@ -1,5 +1,13 @@
-<nav class=""navbar navbar-default>
+<nav class="navbar navbar-default">
 
-    <a href="#/" class="navbar-brand" >Test Blog</a>
+    <div class="navbar-header">
+        <a href="#/" class="navbar-brand" >Test Blog</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+        <li ng-repeat="page in pages"><a href="#/page/{{ pages.indexOf(page) }}">{{ page.title }}</a></li>
+    </ul>
+
+
 
 </nav>

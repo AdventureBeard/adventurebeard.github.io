@@ -12,5 +12,6 @@ angular.module('app.directives', [])
             restrict: 'E',
             templateUrl: 'partials/navigationbar.html',
             replace: true
+
         };
-    }]);;
+    }]);
