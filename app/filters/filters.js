@@ -1,2 +1,2 @@
 
-angular.module('app.filters', ['app.directives']);
+var filters = angular.module('app.filters', ['app.directives']);

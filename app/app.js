@@ -1,6 +1,7 @@
 angular.module('app', [
     'ngRoute',
-    'app.controllers'
+    'app.controllers',
+    'app.filters'
 ])
     .config(['$routeProvider', function($routeProvider) {
 

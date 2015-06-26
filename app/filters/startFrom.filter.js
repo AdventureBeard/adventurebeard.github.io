@@ -1,4 +1,7 @@
-angular.module('app.filters')
+
+
+filters
+
     .filter('startFrom', function() {
         return function(input, start) {
             start = +start;
