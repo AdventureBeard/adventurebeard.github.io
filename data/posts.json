@@ -39,6 +39,36 @@
     "title" : "Seventh post",
     "excerpt": "TEST TEST TEST EXCERPT TEST TEST TEST TEST",
     "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
+  },
+
+  {
+    "title" : "Eighth post",
+    "excerpt": "TEST TEST TEST EXCERPT TEST TEST TEST TEST",
+    "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
+  },
+
+  {
+    "title" : "Ninth post",
+    "excerpt": "TEST TEST TEST EXCERPT TEST TEST TEST TEST",
+    "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
+  },
+
+  {
+    "title" : "Tenth post",
+    "excerpt": "TEST TEST TEST EXCERPT TEST TEST TEST TEST",
+    "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
+  },
+
+  {
+    "title" : "Eleventh post",
+    "excerpt": "TEST TEST TEST EXCERPT TEST TEST TEST TEST",
+    "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
+  },
+
+  {
+    "title" : "Twelfth post",
+    "excerpt": "TEST TEST TEST EXCERPT TEST TEST TEST TEST",
+    "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
   }
 
 ]
