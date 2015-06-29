@@ -1,12 +1,14 @@
 angular.module('app', [
     'ngRoute',
-    'app.controllers'
+    'app.controllers',
+    'app.filters',
+    'angularUtils.directives.dirPagination'
 ])
     .config(['$routeProvider', function($routeProvider) {
 
         $routeProvider.when('/', {
             templateUrl: 'views/post.html',
-            controller: 'PostController'
+            controller: 'PostListController'
 
         }).when('/post/:id', {
             templateUrl: 'views/singlepost.html',
