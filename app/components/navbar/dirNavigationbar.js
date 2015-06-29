@@ -3,7 +3,6 @@
 angular.module('app.directives')
 
     .directive('navigationbar', [function() {
-
         return {
 
             controller: ['$scope', '$http', function($scope, $http){
@@ -15,6 +14,5 @@ angular.module('app.directives')
             restrict: 'E',
             templateUrl: 'app/components/navbar/navigationbar.html',
             replace: true
-
         };
     }]);

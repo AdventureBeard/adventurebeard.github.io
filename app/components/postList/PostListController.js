@@ -4,7 +4,7 @@
  * Created by braden on 6/24/15.
  */
 
-controllers
+angular.module('app.controllers')
     
      .controller('PostListController', ['$scope', '$http', function($scope, $http) {
 
