@@ -10,7 +10,7 @@ angular.module('app.directives', [])
             }],
 
             restrict: 'E',
-            templateUrl: 'partials/navigationbar.html',
+            templateUrl: 'app/components/navbar/navigationbar.html',
             replace: true
 
         };
