@@ -1,7 +1,8 @@
-<article ng-repeat="post in posts | startFrom: pageSize*currentPage | limitTo: pageSize">
+<article dir-paginate="post in posts | itemsPerPage: pageSize" current-page="currentPage">
 
     <h1> {{ post.title }} </h1>
     <p> {{ post.excerpt }}</p>
     <a href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</a>
 
 </article>
+<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="partials/dirPagination.tpl.html"></dir-pagination-controls>

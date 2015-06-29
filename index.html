@@ -1,6 +1,4 @@
 <!doctype html>
-</body>
-</html>
 <html ng-app="app">
     <head>
         <meta charset="UTF-8">
@@ -14,14 +12,7 @@
 
             <navigationbar></navigationbar>
             <div ng-view></div>
-            <div ng-controller="PostListController">
-                <button class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
-                    Previous
-                </button>
-                {{currentPage+1}}/{{numberOfPages()}}
-                <button class="btn btn-default" ng-disabled="currentPage >= posts.length/pageSize - 1" ng-click="currentPage=currentPage+1">
-                    Next
-                </button>
+            <div>
             </div>
 
         </div>
@@ -38,6 +29,10 @@
         <script src="app/controllers/SinglePostController.js"></script>
         <script src="app/filters/filters.js"></script>
         <script src="app/filters/startFrom.filter.js"></script>
+        <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
+
+
+
 
 
 

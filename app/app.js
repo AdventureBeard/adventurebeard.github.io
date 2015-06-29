@@ -1,7 +1,8 @@
 angular.module('app', [
     'ngRoute',
     'app.controllers',
-    'app.filters'
+    'app.filters',
+    'angularUtils.directives.dirPagination'
 ])
     .config(['$routeProvider', function($routeProvider) {
 
