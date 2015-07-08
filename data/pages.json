@@ -1,11 +1,17 @@
 [
   {
     "title": "About",
-    "content": "TEST TEST TEST OH YEAH ABOUT TEST TEST TEST"
+    "content": "My name is Braden and thanks mr skeltal doot doot."
   },
 
   {
     "title": "Contact",
-    "content": "TEST TEST TEST OH YEAH CONTACT TEST TEST TEST"
+    "content": "This is where rad contact info goes so you can contact me."
+  },
+
+  {
+    "title": "SoundCloud",
+    "content": "SoundCloud stuff goes here"
   }
+
 ]

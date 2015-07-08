@@ -1,0 +1,16 @@
+<md-content>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>
+                <a href="#/">AdventureBeard</a>
+            </h2>
+
+            <span flex></span>
+
+               <div ng-repeat="page in pages">
+                   <md-button href="#/page/{{pages.indexOf(page)}}"> {{ page.title }}</md-button>
+               </div>
+
+        </div>
+    </md-toolbar>
+</md-content>

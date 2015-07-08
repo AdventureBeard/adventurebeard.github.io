@@ -1,2 +1,2 @@
-require('./../../js/angular');
+require('./angular');
 module.exports = angular;

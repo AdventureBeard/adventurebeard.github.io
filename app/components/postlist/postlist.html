@@ -1,0 +1,24 @@
+<md-card>
+    <md-content class="md-padding">
+
+        <div dir-paginate="post in posts | itemsPerPage: pageSize" current-page="currentPage">
+
+                <md-list-item>
+                        <md-list-item-text>
+                        <h1><a href="#/post/{{ posts.length - posts.indexOf(post) - 1}}" class="md-title"> {{ post.title }} </a></h1>
+                        <p> {{ post.excerpt }}</p>
+                        </md-list-item-text>
+                </md-list-item>
+
+                <div class="md-actions" layout="row" layout-align="end center">
+                    <md-button href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</md-button>
+                </div>
+
+                <md-divider></md-divider>
+
+        </div>
+
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="app/components/pagination/dirPagination.tpl.html"></dir-pagination-controls>
+
+    </md-content>
+</md-card>
