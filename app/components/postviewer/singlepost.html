@@ -1,8 +1,11 @@
 <md-card>
     <md-content class="md-padding">
-    <h1> {{ post.title }}</h1>
-    <b> {{ post.content }}</b>
-    </md-content>
 
+        <h1> {{ post.title }}</h1>
+        <!--<p> {{ post.content }}</p>-->
+        <p ng-bind-html="post.content"></p>
+
+    </md-content>
+    <md-divider></md-divider>
     <md-button href="#/">&larr; Go back</md-button>
 </md-card>

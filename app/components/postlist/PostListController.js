@@ -11,14 +11,16 @@ angular.module('app.controllers')
         $scope.currentPage = 1;
         $scope.pageSize = 4;
         $scope.posts = [];
+        $scope.totalPages = 0;
 
         $http.get('data/posts.json').success(function(data) {
             $scope.posts = data.reverse();
+            $scope.totalPages = Math.ceil($scope.posts.length / $scope.pageSize);
 
         });
 
-        $scope.pageChangeHandler = function(page) {
-            console.log(page);
+        $scope.changePage = function(x) {
+            $scope.currentPage = $scope.currentPage + x;
         }
 
 

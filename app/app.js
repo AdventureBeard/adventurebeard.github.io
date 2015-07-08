@@ -3,7 +3,9 @@ angular.module('app', [
     'app.controllers',
     'app.filters',
     'angularUtils.directives.dirPagination',
-    'ngMaterial'
+    'ngMaterial',
+    'ngSanitize',
+    'ngAnimate'
 ])
     .config(['$routeProvider', function($routeProvider) {
 

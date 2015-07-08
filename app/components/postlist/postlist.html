@@ -1,9 +1,11 @@
 <md-card>
     <md-content class="md-padding">
 
-        <div dir-paginate="post in posts | itemsPerPage: pageSize" current-page="currentPage">
+        <!--<div dir-paginate="post in posts | itemsPerPage: pageSize" current-page="currentPage">-->
+        <div ng-repeat="post in posts | limitTo:pageSize:pageSize*(currentPage - 1)">
 
-                <md-list-item>
+
+                <!--<md-list-item>-->
                         <md-list-item-text>
                         <h1><a href="#/post/{{ posts.length - posts.indexOf(post) - 1}}" class="md-title"> {{ post.title }} </a></h1>
                         <p> {{ post.excerpt }}</p>
@@ -13,12 +15,18 @@
                 <div class="md-actions" layout="row" layout-align="end center">
                     <md-button href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</md-button>
                 </div>
-
                 <md-divider></md-divider>
 
         </div>
 
-        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="app/components/pagination/dirPagination.tpl.html"></dir-pagination-controls>
+        <div style="text-align: center">
+
+            <md-button class="md-primary" ng-disabled="currentPage === 1" ng-click="changePage(-1)">Previous</md-button>
+            {{currentPage}} / {{ totalPages }}
+            <md-button class="md-primary" ng-disabled="currentPage === totalPages" ng-click="changePage(1)">Next</md-button>
+
+        </div>
+        <!--<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="app/components/pagination/dirPagination.tpl.html"></dir-pagination-controls>-->
 
     </md-content>
 </md-card>

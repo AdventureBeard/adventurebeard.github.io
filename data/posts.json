@@ -74,6 +74,6 @@
   {
     "title" : "Thirteenth post",
     "excerpt": "TEST TEST TEST TEST TEST TEST",
-    "content": "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENTCONTENT"
+    "content": "<p>I like potatoes.</p> <h4>URFF URFF URFF</h4> <h3>Heading 3</h3> <p>Having a good time.</p> <ul><li>one</li><li>two</li><li>three</li></ul>"
   }
 ]
