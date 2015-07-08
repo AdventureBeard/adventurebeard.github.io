@@ -4,10 +4,27 @@
 
 .pagination {
     width: 100%;
-    alignment: center;
-    color: #23877b;
+    color: #72a6ac;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 a {
-    color: #23877b;
+    color: #72a6ac;
+}
+
+.md-card-image {
+    height: 7em;
+}
+
+#centerPageBar {
+    margin: auto 0;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    border:3px solid #8AC007;
+    padding: 10px;
 }
