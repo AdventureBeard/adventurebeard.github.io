@@ -1,0 +1,13 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.pagination {
+    width: 100%;
+    alignment: center;
+    color: #23877b;
+}
+
+a {
+    color: #23877b;
+}

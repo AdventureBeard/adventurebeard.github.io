@@ -1,13 +1,16 @@
-<nav class="navbar navbar-default">
+<md-content>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>
+                <a href="#/">AdventureBeard</a>
+            </h2>
 
-    <div class="navbar-header">
-        <a href="#/" class="navbar-brand" >Test Blog</a>
-    </div>
+            <span flex></span>
 
-    <ul class="nav navbar-nav">
-        <li ng-repeat="page in pages"><a href="#/page/{{ pages.indexOf(page) }}">{{ page.title }}</a></li>
-    </ul>
+               <div ng-repeat="page in pages">
+                   <md-button href="#/page/{{pages.indexOf(page)}}"> {{ page.title }}</md-button>
+               </div>
 
-
-
-</nav>
+        </div>
+    </md-toolbar>
+</md-content>

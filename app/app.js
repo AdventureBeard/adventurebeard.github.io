@@ -2,7 +2,8 @@ angular.module('app', [
     'ngRoute',
     'app.controllers',
     'app.filters',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'ngMaterial'
 ])
     .config(['$routeProvider', function($routeProvider) {
 
@@ -22,4 +23,10 @@ angular.module('app', [
             redirectTo: '/'
 
         })
-    }]);
+    }])
+
+    .config(function($mdThemingProvider) {
+            $mdThemingProvider.theme('default')
+                .primaryPalette('blue-grey')
+
+    });

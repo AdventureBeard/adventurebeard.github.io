@@ -1,9 +1,19 @@
-<article dir-paginate="post in posts | itemsPerPage: pageSize" current-page="currentPage">
+<div dir-paginate="post in posts | itemsPerPage: pageSize" current-page="currentPage">
 
-    <h1> {{ post.title }} <small> {{ post.date | date }} </small></h1>
-    <p> {{ post.excerpt }}</p>
-    <a href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</a>
+    <md-card>
 
-</article>
+        <md-card-content>
+            <h1><a href="#/post/{{ posts.length - posts.indexOf(post) - 1}}" class="md-title"> {{ post.title }} </a></h1>
+            <p> {{ post.excerpt }}</p>
+        </md-card-content>
+
+        <div class="md-actions" layout="row" layout-align="end center">
+            <md-button href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</md-button>
+        </div>
+
+    </md-card>
+
+</div>
+
 <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="app/components/pagination/dirPagination.tpl.html"></dir-pagination-controls>
 

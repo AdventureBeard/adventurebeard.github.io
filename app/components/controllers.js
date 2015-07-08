@@ -1,2 +1,2 @@
-angular.module('app.controllers', ['app.directives']);
+angular.module('app.controllers', ['app.directives', 'ngMaterial']);
 
