@@ -1,13 +1,8 @@
     <md-content ng-if="!mobileCheck()" class="md-padding">
 
-        <md-input-container flex>
-            <label>Search</label>
-            <input ng-model="search">
-        </md-input-container>
-
         <div layout="row" layout-wrap id="postContainer" >
 
-            <div style="margin: 0 auto" ng-repeat="post in posts | limitTo:pageSize:pageSize*(currentPage - 1) | filter: search">
+            <div style="margin: 0 auto" ng-repeat="post in posts | limitTo:pageSize:pageSize*(currentPage - 1)">
                 <md-card>
                     <canvas id="triCanvas{{$index}}" class="md-card-image">{{ trianglify($index, post.title)}} </canvas>
 
