@@ -38,7 +38,7 @@ angular.module('app.controllers')
                 cell_size: 75,
                 variance: Math.random(),
                 height: canvas.height,
-                width: 1000,
+                width: 500,
                 x_colors: colors[Math.floor(Math.random() * colors.length)],
                 y_colors: colors[Math.floor(Math.random() * colors.length)],
                 seed: title
