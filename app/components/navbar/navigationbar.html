@@ -29,7 +29,7 @@
                         <div ng-repeat="page in pages">
 
                             <md-menu-item>
-                                <a href="#/page/{{pages.indexOf(page)}}">{{ page.title }}</a>
+                                <a ng-click="$mdCloseMenu()" href="#/page/{{pages.indexOf(page)}}">{{ page.title }}</a>
                             </md-menu-item>
                             <md-divider></md-divider>
 
