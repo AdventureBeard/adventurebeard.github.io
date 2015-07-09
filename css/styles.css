@@ -14,9 +14,6 @@ a {
     color: #774fac;
 }
 
-.md-card-image {
-    height: 7em;
-}
 
 #centerPageBar {
     margin: auto 0;
@@ -25,7 +22,6 @@ a {
 .center {
     margin: auto;
     width: 60%;
-    border:3px solid #8AC007;
     padding: 10px;
 }
 
