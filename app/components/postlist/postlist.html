@@ -1,60 +1,49 @@
-    <md-content ng-if="!mobileCheck()" class="md-padding">
-
-        <div layout="row" layout-wrap id="postContainer" >
-
-            <div style="margin: 0 auto" ng-repeat="post in posts | limitTo:pageSize:pageSize*(currentPage - 1)">
-                <md-card>
-                    <canvas id="triCanvas{{$index}}" class="md-card-image">{{ trianglify($index, post.title)}} </canvas>
-
-
-                    <md-card-content>
-                            <md-title><a href="#/post/{{ posts.length - posts.indexOf(post) - 1}}" class="md-title"> {{ post.title }}</a></md-title>
-                            <h5 style="float: right">{{ post.date | date }}</h5>
+<md-content ng-if="!mobileCheck()" class="md-padding">
+    <div layout="column" id="postContainer">
+        <div style="margin: 0 auto" ng-repeat="post in posts | limitTo:pageSize:pageSize*(currentPage - 1)">
+            <md-card>
+                <canvas style="width: 100%" id="triCanvas{{$index}}" class="md-card-image">{{ trianglify($index, post.title)}}</canvas>
+                <md-card-content>
+                    <md-title><a href="#/post/{{ posts.length - posts.indexOf(post) - 1}}" class="md-title"> {{
+                        post.title }}</a></md-title>
+                    <h5 style="float: right">{{ post.date | date }}</h5>
+                </md-card-content>
+                <div class="post">
+                    <md-card-content style="display: inline-block">
+                        <p ng-bind-html="post.content"></p>
                     </md-card-content>
-
-                    <div class="md-actions" layout="row" layout-align="end center">
-                        <md-button href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</md-button>
-                    </div>
-
-                </md-card>
-            </div>
-
-        </div>
-
-        <div style="text-align: center">
-
-            <md-button class="md-primary" ng-disabled="currentPage === 1" ng-click="changePage(-1)">Previous</md-button>
-            {{currentPage}} / {{ totalPages }}
-            <md-button class="md-primary" ng-disabled="currentPage === totalPages" ng-click="changePage(1)">Next</md-button>
-
-        </div>
-
-    </md-content>
-
-    <div ng-if="mobileCheck()">
-
-        <md-list ng-repeat="post in posts | limitTo:(pageSize-1):pageSize*(currentPage - 1)">
-            <md-list-item>
-                <h2><a href="#/post/{{posts.length - posts.indexOf(post) - 1}}">{{ post.title }}</a></h2>
-
-            </md-list-item>
-            <md-list-item>
-                <p>{{post.content | limitTo: 60}}</p>
-            </md-list-item>
-            <md-list-item>
-                <span flex></span>
-                <div class="md-actions" layout="row" layout-align="end center">
-                        <md-button href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</md-button>
                 </div>
-            </md-list-item>
-            <md-divider></md-divider>
-        </md-list>
-
-        <div style="text-align: center">
-            <md-button class="md-primary" ng-disabled="currentPage === 1" ng-click="changePage(-1)">Previous</md-button>
-            {{currentPage}} / {{ totalPages }}
-            <md-button class="md-primary" ng-disabled="currentPage === totalPages" ng-click="changePage(1)">Next</md-button>
+            </md-card>
         </div>
-
-
     </div>
+    <div style="text-align: center">
+        <md-button class="md-primary" ng-disabled="currentPage === 1" ng-click="changePage(-1)">Previous</md-button>
+        {{currentPage}} / {{ totalPages }}
+        <md-button class="md-primary" ng-disabled="currentPage === totalPages" ng-click="changePage(1)">Next</md-button>
+    </div>
+</md-content>
+
+
+<div ng-if="mobileCheck()">
+    <md-list ng-repeat="post in posts | limitTo:(pageSize-1):pageSize*(currentPage - 1)">
+        <md-list-item>
+            <h2><a href="#/post/{{posts.length - posts.indexOf(post) - 1}}">{{ post.title }}</a></h2>
+        </md-list-item>
+        <md-list-item>
+            <p>{{post.content | limitTo: 60}}</p>
+        </md-list-item>
+        <md-list-item>
+            <span flex></span>
+
+            <div class="md-actions" layout="row" layout-align="end center">
+                <md-button href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</md-button>
+            </div>
+        </md-list-item>
+        <md-divider></md-divider>
+    </md-list>
+    <div style="text-align: center">
+        <md-button class="md-primary" ng-disabled="currentPage === 1" ng-click="changePage(-1)">Previous</md-button>
+        {{currentPage}} / {{ totalPages }}
+        <md-button class="md-primary" ng-disabled="currentPage === totalPages" ng-click="changePage(1)">Next</md-button>
+    </div>
+</div>
