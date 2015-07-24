@@ -24,6 +24,10 @@ angular.module('app.controllers')
             $scope.currentPage = $scope.currentPage + x;
         };
 
+        $scope.toHTML = function(md) {
+            var html = markdown.toHTML(md);
+            return html;
+        };
 
         $scope.trianglify = function (x, title) {
             var canvas = document.getElementById('triCanvas' + x);
@@ -33,7 +37,7 @@ angular.module('app.controllers')
                 cell_size: 75,
                 variance: Math.random(),
                 height: 100,
-                width: 900,
+                width: 1000,
                 x_colors: colors[Math.floor(Math.random() * colors.length)],
                 y_colors: colors[Math.floor(Math.random() * colors.length)],
                 seed: title
@@ -48,4 +52,8 @@ angular.module('app.controllers')
             })(navigator.userAgent || navigator.vendor || window.opera);
             return check;
         }
+
+
+        var d_content = "##Markdown Test!\n\nThis is **markdown**\n\n###Conversion\nI am converting markdown to html.";
+        var test = markdown.toHTML(d_content);
     }]);

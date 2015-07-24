@@ -3,7 +3,7 @@
 
         <h1> {{ post.title }}</h1>
         <!--<p> {{ post.content }}</p>-->
-        <p ng-bind-html="post.content"></p>
+        <p ng-bind-html="toHTML(post.content)"></p>
 
     </md-content>
     <md-divider></md-divider>

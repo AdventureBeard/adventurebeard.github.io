@@ -10,7 +10,7 @@
                 </md-card-content>
                 <div class="post">
                     <md-card-content style="display: inline-block">
-                        <p ng-bind-html="post.content"></p>
+                        <p ng-bind-html="toHTML(post.content)"></p>
                     </md-card-content>
                 </div>
             </md-card>
@@ -34,7 +34,6 @@
         </md-list-item>
         <md-list-item>
             <span flex></span>
-
             <div class="md-actions" layout="row" layout-align="end center">
                 <md-button href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</md-button>
             </div>
