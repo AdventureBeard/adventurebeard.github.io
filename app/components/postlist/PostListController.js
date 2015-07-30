@@ -42,23 +42,4 @@ angular.module('app.controllers')
         var d_content = "##Markdown Test!\n\nThis is **markdown**\n\n###Conversion\nI am converting markdown to html.";
         var test = markdown.toHTML(d_content);
 
-        //$scope.trianglify = function () {
-        //    var canvas = document.getElementById('imageView');
-        //    canvas.width = window.outerHeight;
-        //    canvas.height = window.innerWidth;
-        //
-        //    var pattern = Trianglify({
-        //        cell_size: 75,
-        //        variance: Math.random(),
-        //        height: window.innerHeight + 100,
-        //        width: window.innerWidth,
-        //        x_colors: colors[Math.floor(Math.random() * colors.length)],
-        //        y_colors: colors[Math.floor(Math.random() * colors.length)]
-        //    });
-        //    pattern.canvas(canvas);
-        //};
-        //
-        //
-        //$scope.trianglify();
-;
     }]);

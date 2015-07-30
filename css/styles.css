@@ -17,7 +17,6 @@ a {
 
 md-content {
     background: rgba(0,0,0,0.0);
-
 }
 
 .post {
@@ -32,24 +31,6 @@ md-content {
 md-card {
 }
 
-md-sidenav {
-    height: 100%;
-}
-#sidebar {
-    height: 100%;
-    position: absolute;
-}
-
-#sidebarCanvasContainer {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-
-#sidebarCanvas {
-    background-color: #76ff03;
-}
-
 .center {
     margin: auto;
     width: 90%;
@@ -62,4 +43,8 @@ md-sidenav {
 
 .md-title {
     font-size: 20pt;
+}
+
+body {
+    background-image: url('../img/pattern2.svg');
 }

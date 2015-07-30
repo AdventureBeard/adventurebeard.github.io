@@ -31,25 +31,5 @@ angular.module('app', [
         $mdThemingProvider.theme('default')
             .primaryPalette('purple')
 
-    })
-
-    .run(function () {
-        var colors = ['RdPu', 'GnBu', 'BuPu', 'PuBu', 'PuRd', 'BuGn', 'Purples'];  // Color palettes to be randomly selected by Trianglify.
-        var trianglify = function () {
-            var canvas = document.getElementById('imageView');
-            canvas.width = window.outerHeight;
-            canvas.height = window.innerWidth
-            var pattern = Trianglify({
-                cell_size: 75,
-                variance: Math.random(),
-                height: window.innerHeight + 100,
-                width: window.innerWidth,
-                x_colors: colors[Math.floor(Math.random() * colors.length)],
-                y_colors: colors[Math.floor(Math.random() * colors.length)]
-            });
-            pattern.canvas(canvas);
-        };
-
-
-        trianglify();
     });
+
