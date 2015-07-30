@@ -418,7 +418,7 @@ function MenuProvider($$interimElementProvider) {
               }
               break;
             }
-          } while ((target = target.parentNode) && target != opts.menuContentEl)
+          } while ((target = target.parentNode) && target != opts.menuContentEl);
 
           function close() {
             scope.$apply(function() {

@@ -2300,8 +2300,7 @@ function InterimElementProvider() {
     function attach(scope, element, options) {
       var elementOptions = optionsForElement(element);
       return $mdInkRipple.attach(scope, element, angular.extend(elementOptions, options));
-    };
-
+    }
     function optionsForElement(element) {
       if (element.hasClass('md-icon-button')) {
         return {
@@ -2315,9 +2314,9 @@ function InterimElementProvider() {
           dimBackground: true
         }
       }
-    };
+    }
   }
-  MdButtonInkRipple.$inject = ["$mdInkRipple"];;
+  MdButtonInkRipple.$inject = ["$mdInkRipple"];
 })();
 
 })();
@@ -2354,9 +2353,9 @@ function InterimElementProvider() {
         dimBackground: false,
         fitRipple: true
       }, options));
-    };
+    }
   }
-  MdCheckboxInkRipple.$inject = ["$mdInkRipple"];;
+  MdCheckboxInkRipple.$inject = ["$mdInkRipple"];
 })();
 
 })();
@@ -2394,9 +2393,9 @@ function InterimElementProvider() {
         outline: false,
         rippleSize: 'full'
       }, options));
-    };
+    }
   }
-  MdListInkRipple.$inject = ["$mdInkRipple"];;
+  MdListInkRipple.$inject = ["$mdInkRipple"];
 })();
 
 })();
@@ -2823,9 +2822,9 @@ function attrNoDirective() {
         outline: false,
         rippleSize: 'full'
       }, options));
-    };
+    }
   }
-  MdTabInkRipple.$inject = ["$mdInkRipple"];;
+  MdTabInkRipple.$inject = ["$mdInkRipple"];
 })();
 
 })();
@@ -8491,7 +8490,7 @@ function MenuProvider($$interimElementProvider) {
               }
               break;
             }
-          } while ((target = target.parentNode) && target != opts.menuContentEl)
+          } while ((target = target.parentNode) && target != opts.menuContentEl);
 
           function close() {
             scope.$apply(function() {

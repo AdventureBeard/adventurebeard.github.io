@@ -7,7 +7,7 @@ angular.module('app', [
     'ngSanitize',
     'ngAnimate'
 ])
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.when('/', {
             templateUrl: 'app/components/postlist/postlist.html',
@@ -27,8 +27,9 @@ angular.module('app', [
         })
     }])
 
-    .config(function($mdThemingProvider) {
-            $mdThemingProvider.theme('default')
-                .primaryPalette('purple')
+    .config(function ($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('purple')
 
     });
+

@@ -1,5 +1,6 @@
 * {
     font-family: 'Roboto', sans-serif;
+    font-size: 14pt;
 }
 
 .pagination {
@@ -14,14 +15,25 @@ a {
     color: #774fac;
 }
 
+md-content {
+    background: rgba(0,0,0,0.0);
+}
+
+.post {
+    width: 80rem;
+    align-self: center;
+}
 
 #centerPageBar {
     margin: auto 0;
 }
 
+md-card {
+}
+
 .center {
     margin: auto;
-    width: 60%;
+    width: 90%;
     padding: 10px;
 }
 
@@ -29,27 +41,10 @@ a {
     vertical-align: middle;
 }
 
-.material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
+.md-title {
+    font-size: 20pt;
+}
 
-    /* Support for all WebKit browsers. */
-    -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
-    text-rendering: optimizeLegibility;
-
-    /* Support for Firefox. */
-    -moz-osx-font-smoothing: grayscale;
-
-    /* Support for IE. */
-    font-feature-settings: 'liga';
+body {
+    background-image: url('../img/pattern2.svg');
 }
