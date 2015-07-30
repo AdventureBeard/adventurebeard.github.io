@@ -1,6 +1,6 @@
 * {
     font-family: 'Roboto', sans-serif;
-    font-size: 16pt;
+    font-size: 14pt;
 }
 
 .pagination {
@@ -15,8 +15,9 @@ a {
     color: #774fac;
 }
 
-.ng-scope {
-    height: 100%;
+md-content {
+    background: rgba(0,0,0,0.0);
+
 }
 
 .post {
@@ -57,4 +58,8 @@ md-sidenav {
 
 .vertical-align {
     vertical-align: middle;
+}
+
+.md-title {
+    font-size: 20pt;
 }

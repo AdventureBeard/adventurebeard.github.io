@@ -14,8 +14,10 @@
     <body>
 
 
+        <canvas id="imageView" style="position: absolute">
+        </canvas>
         <navigationbar></navigationbar>
-        <sidebar id="sidebar"></sidebar>
+        <!--<sidebar id="sidebar"></sidebar>-->
         <div class="container" layout="column" >
             <div ng-view></div>
         </div>
@@ -30,6 +32,7 @@
         <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
         <script src="bower_components/trianglify/dist/trianglify.min.js"></script>
         <script src="bower_components/markdown/lib/markdown.js"></script>
+        <script src="bower_components/underscore/underscore-min.js"></script>
         <script src="bower_components/d3/d3.js"></script>
         <script src="app/app.js"></script>
 
