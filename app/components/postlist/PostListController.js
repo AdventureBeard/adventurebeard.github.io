@@ -13,7 +13,6 @@ angular.module('app.controllers')
         $scope.posts = [];
         $scope.totalPages = 0;
 
-        var colors = ['RdPu', 'GnBu', 'BuPu', 'PuBu', 'PuRd', 'BuGn', 'Purples'];  // Color palettes to be randomly selected by Trianglify.
 
         $http.get('data/posts.json').success(function (data) {
             $scope.posts = data.reverse();
@@ -24,26 +23,11 @@ angular.module('app.controllers')
             $scope.currentPage = $scope.currentPage + x;
         };
 
-        $scope.toHTML = function(md) {
+        $scope.toHTML = function (md) {
             var html = markdown.toHTML(md);
             return html;
         };
 
-        $scope.trianglify = function (x, title) {
-            var canvas = document.getElementById('triCanvas' + x);
-
-
-            var pattern = Trianglify({
-                cell_size: 75,
-                variance: Math.random(),
-                height: 100,
-                width: 1000,
-                x_colors: colors[Math.floor(Math.random() * colors.length)],
-                y_colors: colors[Math.floor(Math.random() * colors.length)],
-                seed: title
-            });
-            pattern.canvas(canvas);
-        };
 
         $scope.mobileCheck = function () {
             var check = false;

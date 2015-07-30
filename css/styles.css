@@ -15,15 +15,38 @@ a {
     color: #774fac;
 }
 
+.ng-scope {
+    height: 100%;
+}
+
 .post {
     width: 80rem;
     align-self: center;
 }
+
 #centerPageBar {
     margin: auto 0;
 }
 
 md-card {
+}
+
+md-sidenav {
+    height: 100%;
+}
+#sidebar {
+    height: 100%;
+    position: absolute;
+}
+
+#sidebarCanvasContainer {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#sidebarCanvas {
+    background-color: #76ff03;
 }
 
 .center {
@@ -34,29 +57,4 @@ md-card {
 
 .vertical-align {
     vertical-align: middle;
-}
-
-.material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-
-    /* Support for all WebKit browsers. */
-    -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
-    text-rendering: optimizeLegibility;
-
-    /* Support for Firefox. */
-    -moz-osx-font-smoothing: grayscale;
-
-    /* Support for IE. */
-    font-feature-settings: 'liga';
 }
