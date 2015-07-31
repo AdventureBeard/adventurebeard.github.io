@@ -21,6 +21,10 @@ angular.module('app', [
             templateUrl: 'app/components/pageviewer/page.html',
             controller: 'PageController'
 
+        }).when('/editor', {
+            templateUrl: 'app/components/posteditor/posteditor.html',
+            controller: 'PostEditorController'
+
         }).otherwise({
             redirectTo: '/'
 
@@ -30,6 +34,10 @@ angular.module('app', [
     .config(function ($mdThemingProvider) {
         $mdThemingProvider.theme('default')
             .primaryPalette('purple')
+            .accentPalette('blue')
+            .warnPalette('orange')
 
     });
+
+
 
