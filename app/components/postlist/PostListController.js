@@ -6,7 +6,7 @@
 
 angular.module('app.controllers')
 
-    .controller('PostListController', ['$scope', '$http', function ($scope, $http) {
+    .controller('PostListController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
 
         $scope.currentPage = 1;
         $scope.pageSize = 4;
@@ -41,5 +41,7 @@ angular.module('app.controllers')
 
         var d_content = "##Markdown Test!\n\nThis is **markdown**\n\n###Conversion\nI am converting markdown to html.";
         var test = markdown.toHTML(d_content);
+
+        $rootScope.showNavbar = true;
 
     }]);

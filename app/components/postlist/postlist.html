@@ -1,4 +1,4 @@
-<md-content ng-if="!mobileCheck()" class="md-padding">
+<md-content ng-if="!mobileCheck()" class="md-padding postlist">
     <div layout="column" id="postContainer">
         <!--<div ng-repeat="post in posts"> -->
         <div ng-repeat="post in posts | limitTo:pageSize:pageSize*(currentPage - 1)">
@@ -9,7 +9,7 @@
                     <h5 style="float: right">{{ post.date | date }}</h5>
                 </md-card-content>
                 <div class="post">
-                    <md-card-content style="display: inline-block">
+                    <md-card-content>
                         <p ng-bind-html="toHTML(post.content)"></p>
                     </md-card-content>
                 </div>

@@ -1,0 +1,51 @@
+<div layout>
+    <md-card flex>
+        <md-toolbar class="md-accent">
+            <div class="md-toolbar-tools">
+                <h1>POST EDITOR</h1>
+                <span flex></span>
+                <md-button>Save</md-button>
+                <md-button class="md-warn">Publish</md-button>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <div layout="row">
+                <md-input-container style="width: 60%">
+                    <label for="">Title</label>
+                    <input type="text"/>
+                </md-input-container>
+                <md-input-container style="width: 20%">
+                    <label for="">Date</label>
+                    <input type="text" ng-model="date"/>
+                </md-input-container>
+                <span flex></span>
+                <md-input-container style="width: 20%">
+                    <label for="">Tags</label>
+                    <input type="text"/>
+                </md-input-container>
+            </div>
+            <div style="height: 700px; width: 100%; border-style: solid; border-width: 1px; border-color: #c5cae9">
+                <div id="epiceditor" style="height: 100%"></div>
+            </div>
+        </md-card-content>
+    </md-card>
+
+
+    <md-card>
+        <md-toolbar class="md-accent">
+            <div class="md-toolbar-tools" layout="row">
+                <h1>POSTS</h1>
+                <span flex></span>
+                <md-button>New</md-button>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <div style="width: 300px">
+                <md-list-item ng-click="alert()" ng-repeat="item in items">
+                    <p>{{item.title}}</p>
+                </md-list-item>
+            </div>
+        </md-card-content>
+    </md-card>
+
+</div>
