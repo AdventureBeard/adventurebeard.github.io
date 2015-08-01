@@ -53,8 +53,6 @@ angular.module('app.controllers')
 
         }
 
-
-
         $http.get('data/posts.json').success(function (data) {
             $scope.editorposts = data.reverse();
             $scope.selectedPost = $scope.editorposts[0];
