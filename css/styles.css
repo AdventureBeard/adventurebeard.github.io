@@ -46,5 +46,5 @@ md-card {
 }
 
 body {
-    background-image: url('http://i.imgur.com/CgrRzHC.png');
+    background: url('http://i.imgur.com/CgrRzHC.png') fixed;
 }
