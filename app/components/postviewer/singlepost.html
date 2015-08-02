@@ -1,11 +1,16 @@
-<md-card>
-    <md-content class="md-padding">
+<md-content class="md-padding postlist">
 
-        <h1> {{ post.title }}</h1>
-        <!--<p> {{ post.content }}</p>-->
-        <p ng-bind-html="toHTML(post.content)"></p>
-
-    </md-content>
-    <md-divider></md-divider>
-    <md-button href="#/">&larr; Go back</md-button>
-</md-card>
+    <md-card class="center" style="">
+        <md-content class="">
+            <h1> {{ post.title }}</h1>
+            <!--<p> {{ post.content }}</p>-->
+            <p ng-bind-html="toHTML(post.content)"></p>
+        </md-content>
+        <md-divider></md-divider>
+        <div class="md-actions" layout="row">
+            <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on: {{ post.date | date }}</p>
+            <span flex></span>
+            <md-button href="#/" layout-align="end center">&larr;Go back</md-button>
+        </div>
+    </md-card>
+</md-content>

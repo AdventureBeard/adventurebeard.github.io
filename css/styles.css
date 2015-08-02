@@ -1,6 +1,8 @@
+
+
 * {
     font-family: 'Roboto', sans-serif;
-    font-size: 14pt;
+    font-size: 12pt;
 }
 
 .pagination {
@@ -33,8 +35,9 @@ md-card {
 
 .center {
     margin: auto;
-    width: 90%;
+    width: 50%;
     padding: 10px;
+    text-align: left;
 }
 
 .vertical-align {
@@ -45,6 +48,21 @@ md-card {
     font-size: 20pt;
 }
 
-body {
-    background: url('http://i.imgur.com/CgrRzHC.png') fixed;
+html {
+    background: url(http://i.imgur.com/CgrRzHC.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
+body {
+    background: rgba(0,0,0,0);
+    margin: 0;
+    padding: 0;
+}
+
+.centered {
+    margin: 0 auto;
+}
+

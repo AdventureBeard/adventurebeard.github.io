@@ -2,6 +2,7 @@ angular.module('app.controllers')
     .controller('PostEditorController', ['$scope', '$rootScope', '$timeout', '$http', function ($scope, $rootScope, $timeout, $http) {
 
         $scope.editorposts = undefined;
+        $scope.selectedId = 0;
         var editor = undefined;
 
         function loadEditor(startingContent) {
@@ -46,20 +47,39 @@ angular.module('app.controllers')
         }
 
         $scope.loadPost = function(id) {
+            reloadPosts();
+            $scope.selectedId = id;
             console.log("Got id: " + id);
-            $scope.selectedPost = $scope.editorposts[id-1];
-            editor.importFile(null, $scope.selectedPost.content);
-            editor.load();
+            editor.importFile(null, $scope.editorposts[$scope.selectedId-1].content);
+            editor.load()
+        };
 
+        $scope.savePosts = function() {
+            console.log("Saving posts...");
+            var body = editor.getElement('editor').body;
+            var content = ( body.innerText || body.textContent );
+            $scope.editorposts[$scope.selectedId-1].content = content;
+            $http.post('http://localhost:3000/save', $scope.editorposts);
+            reloadPosts();
+        };
+
+        var reloadPosts = function() {
+            console.log("Reloading posts...");
+            $http.get('http://localhost:3000/posts').success(function (data) {
+                $scope.editorposts = data;
+            });
+        };
+
+        var loadPosts = function() {
+            console.log("Loading posts...");
+            $http.get('http://localhost:3000/posts').success(function (data) {
+                $scope.editorposts = data;
+                $scope.selectedPost = $scope.editorposts[0];
+                loadEditor($scope.selectedPost.content);
+            });
         }
 
-        $http.get('data/posts.json').success(function (data) {
-            $scope.editorposts = data.reverse();
-            $scope.selectedPost = $scope.editorposts[0];
-            loadEditor($scope.selectedPost.content);
-
-        });
-
         $rootScope.showNavbar = false;
+        loadPosts();
 
     }]);
