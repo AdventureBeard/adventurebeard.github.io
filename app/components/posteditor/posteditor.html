@@ -1,5 +1,5 @@
-<div layout="row" class="centered" style="width: 60%">
-    <md-card style="width:70%">
+<div layout="row" class="centered" style="width: 90%">
+    <md-card style="">
         <md-toolbar class="md-accent">
             <div class="md-toolbar-tools">
                 <h1>POST EDITOR</h1>
@@ -32,17 +32,17 @@
     </md-card>
 
 
-    <md-card style="width: 30%">
+    <md-card style="">
         <md-toolbar class="md-accent">
             <div class="md-toolbar-tools" layout="row">
                 <h1>POSTS</h1>
                 <span flex></span>
-                <md-button>New</md-button>
+                <md-button ng-click="newPost()">New</md-button>
             </div>
         </md-toolbar>
         <md-card-content>
             <div style="width: 100%">
-                <md-list-item ng-click="loadPost(item.id)" ng-repeat="item in editorposts">
+                <md-list-item ng-click="selectPost(item.id)" ng-repeat="item in editorposts">
                     <p>{{item.title}}</p>
                 </md-list-item>
             </div>

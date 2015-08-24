@@ -10,7 +10,7 @@ angular.module('app.controllers')
                 container: 'epiceditor',
                 textarea: null,
                 basePath: 'bower_components/EpicEditor/epiceditor',
-                clientSideStorage: true,
+                clientSideStorage: false,
                 localStorageName: 'epiceditor',
                 useNativeFullscreen: true,
                 parser: marked,
@@ -46,38 +46,36 @@ angular.module('app.controllers')
             editor.reflow('Height')
         }
 
-        $scope.loadPost = function(id) {
-            reloadPosts();
-            $scope.selectedId = id;
-            console.log("Got id: " + id);
-            editor.importFile(null, $scope.editorposts[$scope.selectedId-1].content);
-            editor.load()
-        };
-
-        $scope.savePosts = function() {
-            console.log("Saving posts...");
-            var body = editor.getElement('editor').body;
-            var content = ( body.innerText || body.textContent );
-            $scope.editorposts[$scope.selectedId-1].content = content;
-            $http.post('http://localhost:3000/save', $scope.editorposts);
-            reloadPosts();
-        };
-
-        var reloadPosts = function() {
-            console.log("Reloading posts...");
-            $http.get('http://localhost:3000/posts').success(function (data) {
-                $scope.editorposts = data;
-            });
-        };
-
         var loadPosts = function() {
             console.log("Loading posts...");
-            $http.get('http://localhost:3000/posts').success(function (data) {
+            $http.get('http://localhost:3000/').success(function (data) {
                 $scope.editorposts = data;
                 $scope.selectedPost = $scope.editorposts[0];
                 loadEditor($scope.selectedPost.content);
             });
-        }
+        };
+
+        var refreshPosts = function() {
+            $http.get('http://localhost:3000/').success(function (data) {
+                $scope.editorposts = data;
+            });
+        };
+
+        $scope.selectPost = function( x ) {
+            var content;
+            var id = {id: x};
+            $http.post('http://localhost:3000/select', id).success(function (data) {
+                content = data[0].content;
+                editor.importFile('', content);
+            })
+        };
+
+        $scope.newPost = function() {
+            console.log("Attempting to make a new post...");
+            $http.get('http://localhost:3000/new').success(function (data) {
+                refreshPosts();
+            });
+        };
 
         $rootScope.showNavbar = false;
         loadPosts();
