@@ -46,7 +46,7 @@ angular.module('app.controllers')
             editor.reflow('Height')
         }
 
-        var loadPosts = function() {
+        var loadPosts = function() {  // Fix or get rid of this. Doesn't fit with the paradigm.
             console.log("Loading posts...");
             $http.get('http://localhost:3000/').success(function (data) {
                 $scope.editorposts = data;
@@ -55,7 +55,7 @@ angular.module('app.controllers')
             });
         };
 
-        var refreshPosts = function() {
+        var refreshPostList = function() {
             $http.get('http://localhost:3000/').success(function (data) {
                 $scope.editorposts = data;
             });
@@ -73,7 +73,7 @@ angular.module('app.controllers')
         $scope.newPost = function() {
             console.log("Attempting to make a new post...");
             $http.get('http://localhost:3000/new').success(function (data) {
-                refreshPosts();
+                refreshPostList();
             });
         };
 
