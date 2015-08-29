@@ -82,11 +82,12 @@ angular.module('app.controllers')
         };
 
         $scope.savePost = function ( x ) {
-            var content = editor.getElement('editor').body.innerHTML;
+            var content = editor.getElement('editor').body.innerText;
             console.log("Tryna update content w/ :" + content);
             var obj = {id: selectedId, content: content};
             $http.put('http://localhost:3000/update', obj).success(function (data) {
                 refreshPostList();
+                alert("Saved.");
             })
         };
 
