@@ -2,7 +2,9 @@ angular.module('app.controllers')
     .controller('PostEditorController', ['$scope', '$rootScope', '$timeout', '$http', function ($scope, $rootScope, $timeout, $http) {
 
         $scope.editorposts = undefined;
-        $scope.selectedId = 0;
+        var selectedId = 0;
+        $scope.postTitle = "";
+        $scope.postDate = "";
         var editor = undefined;
 
         function loadEditor(startingContent) {
@@ -62,9 +64,11 @@ angular.module('app.controllers')
         };
 
         $scope.selectPost = function( x ) {
+            console.log($scope.editorposts[0].title);
             var content;
-            var id = {id: x};
-            $http.post('http://localhost:3000/select', id).success(function (data) {
+            selectedId = x;
+            var obj = {id: x};
+            $http.post('http://localhost:3000/select', obj).success(function (data) {
                 content = data[0].content;
                 editor.importFile('', content);
             })
@@ -74,7 +78,16 @@ angular.module('app.controllers')
             console.log("Attempting to make a new post...");
             $http.get('http://localhost:3000/new').success(function (data) {
                 refreshPostList();
-            });
+            })
+        };
+
+        $scope.savePost = function ( x ) {
+            var content = editor.getElement('editor').body.innerHTML;
+            console.log("Tryna update content w/ :" + content);
+            var obj = {id: selectedId, content: content};
+            $http.put('http://localhost:3000/update', obj).success(function (data) {
+                refreshPostList();
+            })
         };
 
         $rootScope.showNavbar = false;

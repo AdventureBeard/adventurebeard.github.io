@@ -4,7 +4,7 @@
             <div class="md-toolbar-tools">
                 <h1>POST EDITOR</h1>
                 <span flex></span>
-                <md-button ng-click="savePosts();">Save</md-button>
+                <md-button ng-click="savePost(item.id)">Save</md-button>
                 <md-button class="md-warn">Publish</md-button>
             </div>
         </md-toolbar>
@@ -12,11 +12,11 @@
             <div layout="row">
                 <md-input-container style="width: 60%">
                     <label for="">Title</label>
-                    <input type="text" ng-model="editorposts[selectedId].title"/>
+                    <input type="text" ng-model="postTitle"/>
                 </md-input-container>
                 <md-input-container style="width: 20%">
                     <label for="">Date</label>
-                    <input type="text" ng-model="selectedPost.date"/>
+                    <input type="text" ng-model="postDate"/>
                 </md-input-container>
                 <span flex></span>
                 <md-input-container style="width: 20%">
