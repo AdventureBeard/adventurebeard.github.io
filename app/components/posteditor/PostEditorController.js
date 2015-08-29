@@ -48,6 +48,10 @@ angular.module('app.controllers')
             editor.reflow('Height')
         }
 
+        $scope.isSelected = function ( x ) {
+            return (x == selectedId);
+        };
+
         var loadPosts = function() {  // Fix or get rid of this. Doesn't fit with the paradigm.
             console.log("Loading posts...");
             $http.get('http://localhost:3000/').success(function (data) {
@@ -63,14 +67,16 @@ angular.module('app.controllers')
             });
         };
 
-        $scope.selectPost = function( x ) {
+        $scope.selectPost = function( post ) {
             console.log($scope.editorposts[0].title);
-            var content;
-            selectedId = x;
-            var obj = {id: x};
+            selectedId = post.id;
+            $scope.postTitle = post.title;
+            $scope.postDate = post.date.substring(0,10);
+            var obj = {id: selectedId};
             $http.post('http://localhost:3000/select', obj).success(function (data) {
-                content = data[0].content;
+                var content = data[0].content;
                 editor.importFile('', content);
+                editor.edit();
             })
         };
 
@@ -84,10 +90,18 @@ angular.module('app.controllers')
         $scope.savePost = function ( x ) {
             var content = editor.getElement('editor').body.innerText;
             console.log("Tryna update content w/ :" + content);
-            var obj = {id: selectedId, content: content};
+            var obj = {id: selectedId, content: content, title: $scope.postTitle, date: $scope.postDate};
             $http.put('http://localhost:3000/update', obj).success(function (data) {
                 refreshPostList();
                 alert("Saved.");
+            })
+        };
+
+        $scope.deletePost = function() {
+            var obj = {id: selectedId};
+            $http.put("http://localhost:3000/delete", obj).success(function (data) {
+                refreshPostList();
+                selectedId++;
             })
         };
 
