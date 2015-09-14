@@ -1,7 +1,12 @@
 angular.module('app.controllers')
-    .controller('PostEditorController', ['$scope', '$rootScope', '$timeout', '$http', function ($scope, $rootScope, $timeout, $http) {
+    .controller('PostEditorController', ['$scope', '$rootScope', '$timeout', '$http', 'DataService', function ($scope, $rootScope, $timeout, $http, DataService) {
 
         $scope.editorposts = undefined;
+        var selectedId = 0;
+        $scope.postTitle = "";
+        $scope.postDate = "";
+        $scope.numberOfPosts = 0;
+        $scope.postOffset = 0;
         var editor = undefined;
 
         function loadEditor(startingContent) {
@@ -9,7 +14,7 @@ angular.module('app.controllers')
                 container: 'epiceditor',
                 textarea: null,
                 basePath: 'bower_components/EpicEditor/epiceditor',
-                clientSideStorage: true,
+                clientSideStorage: false,
                 localStorageName: 'epiceditor',
                 useNativeFullscreen: true,
                 parser: marked,
@@ -45,23 +50,65 @@ angular.module('app.controllers')
             editor.reflow('Height')
         }
 
-        $scope.loadPost = function(id) {
-            console.log("Got id: " + id);
-            $scope.selectedPost = $scope.editorposts[id-1];
-            editor.importFile(null, $scope.selectedPost.content);
-            editor.load();
+        $scope.isSelected = function ( x ) {
+            return (x == selectedId);
+        };
 
-        }
+        $scope.incPostOffset = function() {
+            $scope.postOffset++;
+        };
+
+        $scope.decPostOffset = function() {
+            $scope.postOffset--;
+        };
 
 
+        var refreshPostList = function () {
+            var data = DataService.refreshPostList(function(callback) {
+                $scope.editorposts = callback;
+                $scope.numberOfPosts = $scope.editorposts.length;
+            });
+        };
 
-        $http.get('data/posts.json').success(function (data) {
-            $scope.editorposts = data.reverse();
-            $scope.selectedPost = $scope.editorposts[0];
-            loadEditor($scope.selectedPost.content);
+        $scope.selectPost = function (post) {
+            selectedId = post.id;
+            $scope.postTitle = post.title;
+            $scope.postDate = post.date.substring(0, 10);
+            var data = DataService.selectPost({id: selectedId}, function(callback) {
+                var content = callback[0].content;
+                editor.importFile('', content);
+                editor.edit();
+            });
 
-        });
+        };
+
+        $scope.newPost = function () {
+           DataService.newPost(function(response){
+               refreshPostList();
+           });
+
+        };
+
+        $scope.savePost = function (x) {
+            var content = editor.getElement('editor').body.innerText;
+            console.log("Tryna update content w/ :" + content);
+            var obj = {id: selectedId, content: content, title: $scope.postTitle, date: $scope.postDate};
+            DataService.savePost(obj, function(callback) {
+                refreshPostList();
+            });
+
+        };
+
+        $scope.deletePost = function () {
+            var obj = {id: selectedId};
+            DataService.deletePost(obj, function(callback) {
+                refreshPostList();
+            });
+
+        };
 
         $rootScope.showNavbar = false;
+        loadEditor();
+        refreshPostList();
 
     }]);

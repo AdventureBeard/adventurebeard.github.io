@@ -15,7 +15,7 @@ angular.module('app.controllers')
 
         var colors = ['RdPu', 'GnBu', 'BuPu', 'PuBu', 'PuRd', 'BuGn', 'Purples'];  // Color palettes to be randomly selected by Trianglify.
 
-        $http.get('data/posts.json').success(function (data) {
+        $http.get('http://localhost:3000/posts').success(function (data) {
             $scope.posts = data.reverse();
             $scope.totalPages = Math.ceil($scope.posts.length / $scope.pageSize);
         });
