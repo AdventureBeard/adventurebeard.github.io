@@ -36,13 +36,16 @@
     <md-card>
         <md-toolbar class="md-accent">
             <div class="md-toolbar-tools" layout="row">
-                <h1>POSTS</h1>
+                <h1>POSTS {{numberOfPosts}}</h1>
                 <span flex></span>
                 <md-button ng-click="newPost()">New</md-button>
             </div>
         </md-toolbar>
         <md-card-content style="">
-            <div style="width: 100%; height: 100%" ng-repeat="item in editorposts">
+            <md-list-item ng-if="postOffset != 0" ng-click="decPostOffset()">
+                <span flex></span><span style="text-align: center">&#x25B2;</span><span flex></span>
+            </md-list-item>
+            <div style="" ng-repeat="item in editorposts | limitTo:10:postOffset">
                 <md-list-item ng-if="isSelected(item.id)" ng-click="selectPost(item)">
                     <p style="font-weight: bold">{{item.title}}</p>
                 </md-list-item>
@@ -50,7 +53,7 @@
                     <p>{{item.title}}</p>
                 </md-list-item>
             </div>
-            <md-list-item ng-click="console.log('down arrow')">
+            <md-list-item ng-click="incPostOffset()">
                 <span flex></span><span style="text-align: center">&#x25BC</span><span flex></span>
             </md-list-item>
         </md-card-content>

@@ -1,10 +1,12 @@
 angular.module('app.controllers')
-    .controller('PostEditorController', ['$scope', '$rootScope', '$timeout', '$http', function ($scope, $rootScope, $timeout, $http) {
+    .controller('PostEditorController', ['$scope', '$rootScope', '$timeout', '$http', 'DataService', function ($scope, $rootScope, $timeout, $http, DataService) {
 
         $scope.editorposts = undefined;
         var selectedId = 0;
         $scope.postTitle = "";
         $scope.postDate = "";
+        $scope.numberOfPosts = 0;
+        $scope.postOffset = 0;
         var editor = undefined;
 
         function loadEditor(startingContent) {
@@ -52,60 +54,61 @@ angular.module('app.controllers')
             return (x == selectedId);
         };
 
-        var loadPosts = function() {  // Fix or get rid of this. Doesn't fit with the paradigm.
-            console.log("Loading posts...");
-            $http.get('http://localhost:3000/').success(function (data) {
-                $scope.editorposts = data;
-                $scope.selectedPost = $scope.editorposts[0];
-                loadEditor($scope.selectedPost.content);
+        $scope.incPostOffset = function() {
+            $scope.postOffset++;
+        };
+
+        $scope.decPostOffset = function() {
+            $scope.postOffset--;
+        };
+
+
+        var refreshPostList = function () {
+            var data = DataService.refreshPostList(function(callback) {
+                $scope.editorposts = callback;
+                $scope.numberOfPosts = $scope.editorposts.length;
             });
         };
 
-        var refreshPostList = function() {
-            $http.get('http://localhost:3000/').success(function (data) {
-                $scope.editorposts = data;
-            });
-        };
-
-        $scope.selectPost = function( post ) {
-            console.log($scope.editorposts[0].title);
+        $scope.selectPost = function (post) {
             selectedId = post.id;
             $scope.postTitle = post.title;
-            $scope.postDate = post.date.substring(0,10);
-            var obj = {id: selectedId};
-            $http.post('http://localhost:3000/select', obj).success(function (data) {
-                var content = data[0].content;
+            $scope.postDate = post.date.substring(0, 10);
+            var data = DataService.selectPost({id: selectedId}, function(callback) {
+                var content = callback[0].content;
                 editor.importFile('', content);
                 editor.edit();
-            })
+            });
+
         };
 
-        $scope.newPost = function() {
-            console.log("Attempting to make a new post...");
-            $http.get('http://localhost:3000/new').success(function (data) {
-                refreshPostList();
-            })
+        $scope.newPost = function () {
+           DataService.newPost(function(response){
+               refreshPostList();
+           });
+
         };
 
-        $scope.savePost = function ( x ) {
+        $scope.savePost = function (x) {
             var content = editor.getElement('editor').body.innerText;
             console.log("Tryna update content w/ :" + content);
             var obj = {id: selectedId, content: content, title: $scope.postTitle, date: $scope.postDate};
-            $http.put('http://localhost:3000/update', obj).success(function (data) {
+            DataService.savePost(obj, function(callback) {
                 refreshPostList();
-                alert("Saved.");
-            })
+            });
+
         };
 
-        $scope.deletePost = function() {
+        $scope.deletePost = function () {
             var obj = {id: selectedId};
-            $http.put("http://localhost:3000/delete", obj).success(function (data) {
+            DataService.deletePost(obj, function(callback) {
                 refreshPostList();
-                selectedId++;
-            })
+            });
+
         };
 
         $rootScope.showNavbar = false;
-        loadPosts();
+        loadEditor();
+        refreshPostList();
 
     }]);

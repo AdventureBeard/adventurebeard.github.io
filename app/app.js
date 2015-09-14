@@ -1,6 +1,7 @@
 angular.module('app', [
     'ngRoute',
     'app.controllers',
+    'app.services',
     'app.filters',
     'angularUtils.directives.dirPagination',
     'ngMaterial',
