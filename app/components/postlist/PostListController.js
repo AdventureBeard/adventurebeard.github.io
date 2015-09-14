@@ -6,17 +6,15 @@
 
 angular.module('app.controllers')
 
-    .controller('PostListController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    .controller('PostListController', ['$scope', '$rootScope', '$http','DataService', function ($scope, $rootScope, $http, DataService) {
 
         $scope.currentPage = 1;
         $scope.pageSize = 4;
         $scope.posts = [];
         $scope.totalPages = 0;
 
-        var colors = ['RdPu', 'GnBu', 'BuPu', 'PuBu', 'PuRd', 'BuGn', 'Purples'];  // Color palettes to be randomly selected by Trianglify.
-
-        $http.get('http://localhost:3000/posts').success(function (data) {
-            $scope.posts = data.reverse();
+        $scope.posts = DataService.getPublished(function (callback) {
+            $scope.posts = callback;
             $scope.totalPages = Math.ceil($scope.posts.length / $scope.pageSize);
         });
 

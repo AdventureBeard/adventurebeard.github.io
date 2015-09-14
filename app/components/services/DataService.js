@@ -30,4 +30,16 @@ angular.module('app.services')
             callback(data);
         })
     };
+
+    this.getPublished = function(callback) {
+        $http.get("http://localhost:3000/getPublished").success(function (data) {
+            callback(data);
+        })
+    }
+
+    this.togglePublished = function (obj, callback) {
+        $http.post("http://localhost:3000/togglePublished", obj).success(function (data) {
+            callback(data);
+        })
+    }
 }]);

@@ -5,7 +5,7 @@
                 <h1>POST EDITOR</h1>
                 <span flex></span>
                 <md-button ng-click="savePost(item.id)">Save</md-button>
-                <md-button class="md-warn">Publish</md-button>
+                <md-button ng-click="togglePublished()" class="md-warn">Publish</md-button>
                 <md-button ng-click="deletePost()" class="md-warn">Delete</md-button>
             </div>
         </md-toolbar>

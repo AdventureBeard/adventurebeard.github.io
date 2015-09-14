@@ -29,9 +29,22 @@ console.log("NODE JS HELL YEAH");
 
 app.get('/', function (req, res) {
 	var posts;
-	var query = "select * from posts";
+	var query = "SELECT * FROM posts";
 	
 	connection.query( query, function(err, data) {
+		if (err) {
+			throw err;
+		} else {
+			posts = data;
+			res.send(posts);
+		}
+	})
+});
+
+app.get('/getPublished', function(req, res) {
+	var posts;
+	var query = "SELECT * FROM posts WHERE published=true";
+	connection.query(query, function(err, data) {
 		if (err) {
 			throw err;
 		} else {

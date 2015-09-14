@@ -7,6 +7,7 @@ angular.module('app.controllers')
         $scope.postDate = "";
         $scope.numberOfPosts = 0;
         $scope.postOffset = 0;
+        $scope.isPublished = false;
         var editor = undefined;
 
         function loadEditor(startingContent) {
@@ -96,7 +97,6 @@ angular.module('app.controllers')
             DataService.savePost(obj, function(callback) {
                 refreshPostList();
             });
-
         };
 
         $scope.deletePost = function () {
@@ -105,6 +105,13 @@ angular.module('app.controllers')
                 refreshPostList();
             });
 
+        };
+
+        $scope.togglePublished = function() {
+            var obj = {id: selectedId};
+            DataService.togglePublished(obj, function(callback) {
+                refreshPostList();
+            })
         };
 
         $rootScope.showNavbar = false;
