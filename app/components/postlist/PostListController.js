@@ -14,7 +14,7 @@ angular.module('app.controllers')
         $scope.totalPages = 0;
 
         $scope.posts = DataService.getPublished(function (callback) {
-            $scope.posts = callback;
+            $scope.posts = callback.reverse();
             $scope.totalPages = Math.ceil($scope.posts.length / $scope.pageSize);
             PostService.setPosts($scope.posts);
         });

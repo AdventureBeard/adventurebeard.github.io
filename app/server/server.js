@@ -55,13 +55,13 @@ app.get('/posts/published', function(req, res) {
 });
 
 app.get('/posts/new', function(req, res) {
-	console.log(new Date());
-	var post = { title: 'New Post', author: 'Author', date: '0000-00-00 00:00:00', content: 'Content goes here.'};
+	var date = new Date();
+	var post = { title: 'New Post', author: 'Author', date: date, content: 'Content goes here.'};
 	connection.query("INSERT INTO posts SET ?", [post], function(err, result) {
 		if (err) {
 			throw err;
 		} else {
-			console.log("Created new post.");
+			res.send(result);
 		}
 	})
 	

@@ -41,11 +41,12 @@
                 <md-button ng-click="newPost()">New</md-button>
             </div>
         </md-toolbar>
-        <md-card-content style="">
-            <md-list-item ng-if="postOffset != 0" ng-click="decPostOffset()">
-                <span flex></span><span style="text-align: center">&#x25B2;</span><span flex></span>
-            </md-list-item>
-            <div style="" ng-repeat="item in editorposts | limitTo:10:postOffset">
+
+        <md-card-content layout-padding style="height: 600px;padding: 24px; overflow-y: auto">
+            <!--<md-list-item ng-disabled="postOffset == 0" ng-click="decPostOffset()">-->
+                <!--<span flex></span><span style="text-align: center">&#x25B2;</span><span flex></span>-->
+            <!--</md-list-item>-->
+            <div style="" ng-repeat="item in editorposts">
                 <md-list-item ng-if="isSelected(item.id)" ng-click="selectPost(item)">
                     <p style="font-weight: bold">{{item.title}}</p>
                 </md-list-item>
@@ -53,9 +54,9 @@
                     <p>{{item.title}}</p>
                 </md-list-item>
             </div>
-            <md-list-item ng-click="incPostOffset()">
-                <span flex></span><span style="text-align: center">&#x25BC</span><span flex></span>
-            </md-list-item>
+            <!--<md-list-item ng-click="incPostOffset()">-->
+                <!--<span flex></span><span style="text-align: center">&#x25BC</span><span flex></span>-->
+            <!--</md-list-item>-->
         </md-card-content>
     </md-card>
 </div>

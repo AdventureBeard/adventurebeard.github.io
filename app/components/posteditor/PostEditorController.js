@@ -65,7 +65,7 @@ angular.module('app.controllers')
 
         var refreshPostList = function () {
             var data = DataService.refreshPostList(function(callback) {
-                $scope.editorposts = callback;
+                $scope.editorposts = callback.reverse();
                 $scope.numberOfPosts = $scope.editorposts.length;
             });
         };
@@ -86,7 +86,6 @@ angular.module('app.controllers')
            DataService.newPost(function(response){
                refreshPostList();
            });
-
         };
 
         $scope.savePost = function (x) {
@@ -100,6 +99,7 @@ angular.module('app.controllers')
         $scope.deletePost = function () {
             var obj = {id: selectedId};
             DataService.deletePost(obj, function(callback) {
+                selectedId++;
                 refreshPostList();
             });
 
