@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 
 console.log("NODE JS HELL YEAH");
 
-app.get('/', function (req, res) {
+app.get('/posts', function (req, res) {
 	var posts;
 	var query = "SELECT * FROM posts";
 	
@@ -41,7 +41,7 @@ app.get('/', function (req, res) {
 	})
 });
 
-app.get('/getPublished', function(req, res) {
+app.get('/posts/published', function(req, res) {
 	var posts;
 	var query = "SELECT * FROM posts WHERE published=true";
 	connection.query(query, function(err, data) {
@@ -54,31 +54,22 @@ app.get('/getPublished', function(req, res) {
 	})
 });
 
-app.get('/new', function(req, res) {
+app.get('/posts/new', function(req, res) {
 	console.log(new Date());
-	var post = { title: 'New Post', author: 'Author', date: '0000-00-00 00:00:00'};
+	var post = { title: 'New Post', author: 'Author', date: '0000-00-00 00:00:00', content: 'Content goes here.'};
 	connection.query("INSERT INTO posts SET ?", [post], function(err, result) {
 		if (err) {
 			throw err;
 		} else {
-			console.log("Created new post metadata.");
+			console.log("Created new post.");
 		}
 	})
 	
-	var postContent = { content:"This is where you type post content! It's markdown compatible!" };
-	connection.query("INSERT INTO postcontent SET ?", postContent, function(err, result) {
-		if (err) {
-			throw err;
-		} else {
-			console.log("Created new post content.");
-		}
-		res.send("DID IT");
-	})
 });
 
-app.post('/select', function(req, res) {
+app.post('/posts/select', function(req, res) {
 	var id = req.body.id;
-	connection.query("SELECT * FROM postcontent WHERE id=?", id, function(err, result) {
+	connection.query("SELECT * FROM posts WHERE id=?", id, function(err, result) {
 		if (err) {
 			throw err;
 		} else {
@@ -89,42 +80,37 @@ app.post('/select', function(req, res) {
 
 // TODO: Learn how to do multiple queries atomically in a way that isn't hideous.
 
-app.put('/update', function(req, res) {
+app.put('/posts/update', function(req, res) {
 	var id = req.body.id;
 	var content = req.body.content;
 	var title = req.body.title;
 	var date = req.body.date;
-	var query1 = "UPDATE postcontent SET content=? WHERE id=?;";
-	var query2 = "UPDATE posts SET title=?,date=? WHERE id=?;";
-	connection.query(query1, [content, id] , function(err, result) {
+	console.log("Updated a post:");
+	console.log("id: " + id);
+	console.log("title: " + title);
+	console.log("date: " + date);
+	console.log("content: " + content.substring(0, 30) + "...");
+	
+	var query = "UPDATE posts SET title=?,date=?,content=? WHERE id=?;";
+	connection.query(query, [title, date, content, id], function(err, result) {
 		if (err) {
 			throw err;
+			console.log("ERR");
 		} else {
-			connection.query(query2, [title, date, id], function(err, result) {
-				if (err) {
-					throw err;
-				} else {
-					res.send();
-				}
-			})
+			console.log("Did a thing.");
+			res.send();
 		}
 	})
 });
 
-app.put('/delete', function(req, res) {
-	console.log("Got a delete query.");
+
+app.put('/posts/delete', function(req, res) {
 	var id = req.body.id;
 	connection.query("DELETE FROM posts WHERE id=?", [id], function(err, result) {
 		if (err) {
 			throw err;
 		} else {
-			connection.query("DELETE FROM postcontent WHERE id=?", [id], function(err, result) {
-				if (err) {
-					throw err;
-				} else {
-					res.send();
-				}
-			})
+			res.send();
 		}
 	})
 });

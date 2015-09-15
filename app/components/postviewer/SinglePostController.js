@@ -5,22 +5,16 @@
 
 angular.module('app.controllers')
     
- .controller('SinglePostController', ['$scope', '$rootScope', '$http', '$routeParams', 'DataService', function($scope, $rootScope, $http, $routeParams, DataService) {
+ .controller('SinglePostController', ['$scope', '$rootScope', '$routeParams', 'PostService', function($scope, $rootScope, $routeParams, PostService) {
 
-        $scope.post = null;
         var selectedId = $routeParams.id;
-
-        for (var post in $scope.posts) {
-            if (post.id == selectedId) {
-                $scope.post = post;
+        var posts = PostService.getPosts();
+        
+        for (var p in posts) {
+            if (p.id == selectedId) {
+                $scope.content = markdown.toHTML(posts[selectedId].content);
             }
         }
-
-
-
-        DataService.selectPost({id: selectedId}, function(callback) {
-            $scope.content = markdown.toHTML(callback[0].content);
-        });
 
         $rootScope.showNavbar = true;
     }]);

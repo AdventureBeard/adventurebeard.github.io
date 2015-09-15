@@ -7,6 +7,7 @@
                     <md-title>
                         <h3  class="md-title"> {{ post.title }}</h3>
                     </md-title>
+                    <md-content ng-bind-html="toHTML(post.content)"></md-content>
                 </md-card-content>
 
                 <md-divider></md-divider>

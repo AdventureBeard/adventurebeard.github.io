@@ -42,3 +42,10 @@ angular.module('app', [
 
 
 
+angular.module('app.controllers', ['app.directives', 'ngMaterial']);
+angular.module('app.directives', []);
+angular.module('app.filters', ['app.directives']);
+angular.module('app.services', []);
+
+
+

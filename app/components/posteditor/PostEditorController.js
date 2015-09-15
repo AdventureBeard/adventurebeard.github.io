@@ -16,7 +16,7 @@ angular.module('app.controllers')
                 textarea: null,
                 basePath: 'bower_components/EpicEditor/epiceditor',
                 clientSideStorage: false,
-                localStorageName: 'epiceditor',
+                localStorageName: '',
                 useNativeFullscreen: true,
                 parser: marked,
                 file: {
@@ -63,7 +63,6 @@ angular.module('app.controllers')
             $scope.postOffset--;
         };
 
-
         var refreshPostList = function () {
             var data = DataService.refreshPostList(function(callback) {
                 $scope.editorposts = callback;
@@ -92,7 +91,6 @@ angular.module('app.controllers')
 
         $scope.savePost = function (x) {
             var content = editor.getElement('editor').body.innerText;
-            console.log("Tryna update content w/ :" + content);
             var obj = {id: selectedId, content: content, title: $scope.postTitle, date: $scope.postDate};
             DataService.savePost(obj, function(callback) {
                 refreshPostList();

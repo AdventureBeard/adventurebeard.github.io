@@ -6,7 +6,7 @@
 
 angular.module('app.controllers')
 
-    .controller('PostListController', ['$scope', '$rootScope', '$http','DataService', function ($scope, $rootScope, $http, DataService) {
+    .controller('PostListController', ['$scope', '$rootScope', '$http','DataService','PostService', function ($scope, $rootScope, $http, DataService, PostService) {
 
         $scope.currentPage = 1;
         $scope.pageSize = 4;
@@ -16,6 +16,7 @@ angular.module('app.controllers')
         $scope.posts = DataService.getPublished(function (callback) {
             $scope.posts = callback;
             $scope.totalPages = Math.ceil($scope.posts.length / $scope.pageSize);
+            PostService.setPosts($scope.posts);
         });
 
         $scope.changePage = function (x) {
@@ -23,10 +24,8 @@ angular.module('app.controllers')
         };
 
         $scope.toHTML = function (md) {
-            var html = markdown.toHTML(md);
-            return html;
-        };
-
+            return markdown.toHTML(md);
+        }
 
         $scope.mobileCheck = function () {
             var check = false;
@@ -35,10 +34,6 @@ angular.module('app.controllers')
             })(navigator.userAgent || navigator.vendor || window.opera);
             return check;
         }
-
-
-        var d_content = "##Markdown Test!\n\nThis is **markdown**\n\n###Conversion\nI am converting markdown to html.";
-        var test = markdown.toHTML(d_content);
 
         $rootScope.showNavbar = true;
 
