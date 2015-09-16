@@ -54,9 +54,21 @@ app.get('/posts/published', function(req, res) {
 	})
 });
 
+app.post('/posts/toggle', function(req, res) {
+	var id = req.body.id;
+	var query = "UPDATE posts SET published = !published WHERE id=?";
+	connection.query(query, [id], function(err, result) {
+		if (err) {
+			throw err;
+		} else {
+			res.send(result);
+		}
+	})
+});
+
 app.get('/posts/new', function(req, res) {
 	var date = new Date();
-	var post = { title: 'New Post', author: 'Author', date: date, content: 'Content goes here.'};
+	var post = { title: 'New Post', author: 'Author', date: date, published: 0, content: 'Content goes here.'};
 	connection.query("INSERT INTO posts SET ?", [post], function(err, result) {
 		if (err) {
 			throw err;
@@ -69,10 +81,12 @@ app.get('/posts/new', function(req, res) {
 
 app.post('/posts/select', function(req, res) {
 	var id = req.body.id;
+	console.log(id);
 	connection.query("SELECT * FROM posts WHERE id=?", id, function(err, result) {
 		if (err) {
 			throw err;
 		} else {
+			console.log(result.content);
 			res.send(result);
 		}
 	})

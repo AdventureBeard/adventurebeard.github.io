@@ -44,7 +44,7 @@ angular.module('app.services')
     };
 
     this.togglePublished = function (obj, callback) {
-        $http.post("http://localhost:3000/posts/publishedtoggle", obj).success(function (data) {
+        $http.post("http://localhost:3000/posts/toggle", obj).success(function (data) {
             callback(data);
         })
     }

@@ -49,9 +49,11 @@
             <div style="" ng-repeat="item in editorposts">
                 <md-list-item ng-if="isSelected(item.id)" ng-click="selectPost(item)">
                     <p style="font-weight: bold">{{item.title}}</p>
+                    <span style="text-align: right" ng-if="item.published == 1">P</span>
                 </md-list-item>
                 <md-list-item ng-if="!isSelected(item.id)" ng-click="selectPost(item)">
                     <p>{{item.title}}</p>
+                    <span style="text-align: right" ng-if="item.published == 1">P</span>
                 </md-list-item>
             </div>
             <!--<md-list-item ng-click="incPostOffset()">-->

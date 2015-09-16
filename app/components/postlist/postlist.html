@@ -12,7 +12,7 @@
 
                 <md-divider></md-divider>
                 <div class="md-actions" layout="row">
-                    <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on: {{ post.date | date }}</p>
+                    <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on {{ post.date | date }} by {{ post.author }}</p>
                     <span flex></span>
                     <md-button href="#/post/{{ post.id }}" layout-align="end center">Read more &rarr;</md-button>
                 </div>
@@ -41,7 +41,7 @@
             <span flex></span>
 
             <div class="md-actions" layout="row" layout-align="end center">
-                <md-button href="#/post/{{ posts.length - posts.indexOf(post) - 1 }}">Read more &rarr;</md-button>
+                <md-button href="#/post/{{ post.id }}">Read more &rarr;</md-button>
             </div>
         </md-list-item>
         <md-divider></md-divider>
