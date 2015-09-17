@@ -1,0 +1,23 @@
+<md-content class="md-padding postlist">
+    <div class="center">
+        <md-card>
+            <md-card-content>
+                <h3 class="md-title">Please login.</h3>
+                <md-input-container style="width: 60%">
+                    <label for="">Username</label>
+                    <input type="text" ng-model="username"/>
+                </md-input-container>
+                <md-input-container style="width: 60%">
+                    <label for="">Password</label>
+                    <input type="password" ng-model="password"/>
+                </md-input-container>
+                <div class="md-actions" layout="row">
+                    <span flex></span>
+                    <md-button ng-click="submit()" layout-align="center center">Submit</md-button>
+                    <span flex></span>
+                </div>
+            </md-card-content>
+
+        </md-card>
+    </div>
+</md-content>

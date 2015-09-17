@@ -14,6 +14,9 @@ function Routes (app, database) {
 	app.post('/posts/select', database.getPost);
 	app.put('/posts/update', database.updatePost);
 	app.post('/posts/delete', database.deletePost);
+	
+	
+	app.post('/auth', database.validateUser);
 }
 
 module.exports = Routes;

@@ -99,6 +99,23 @@ function Database (mysql, credentials) {
 			}
 		})
 	}
+	
+	this.validateUser = function(req, res) {
+		if (req == {}) {
+			return;
+		}
+		var username = req.body.id;
+		console.log("Received " + username);
+		connection.query("SELECT * FROM posts WHERE username=?", username, function(err, result) {
+			if (err) {
+				throw err;
+			} else {
+				console.log(result);
+				res.send(result);
+			}
+		})
+	}
+	
 }
 
 module.exports = Database;

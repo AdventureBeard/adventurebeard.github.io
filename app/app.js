@@ -26,6 +26,10 @@ angular.module('app', [
             templateUrl: 'app/components/posteditor/posteditor.html',
             controller: 'PostEditorController'
 
+        }).when('/login', {
+            templateUrl: 'app/components/login/login.html',
+            controller: 'LoginController'
+
         }).otherwise({
             redirectTo: '/'
 
@@ -36,8 +40,7 @@ angular.module('app', [
         $mdThemingProvider.theme('default')
             .primaryPalette('purple')
             .accentPalette('blue')
-            .warnPalette('orange')
-
+            .warnPalette('orange');
     });
 
 
