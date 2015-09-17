@@ -1,7 +1,6 @@
 # adventurebeard.github.io
 
-
-## It should be fun. 
+# 09/17/15 - The backend is almost done! The site is currently not operational and uses old test data.
 
 I could just make my personal website a static page and call it a day, but I really wanted to make something utilizing the technologies I learned during my most recent internship.
 
