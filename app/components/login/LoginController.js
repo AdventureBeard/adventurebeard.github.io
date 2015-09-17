@@ -9,6 +9,7 @@ angular.module('app.controllers')
             var obj = {username: $scope.username, password: $scope.password};
             DataService.validateUser(obj, function(callback) {
                 console.log(callback);
+                $scope.message= callback;
             })
         }
 

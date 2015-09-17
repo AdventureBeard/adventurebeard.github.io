@@ -1,4 +1,4 @@
-function Database (mysql, credentials, bcrypt) {
+function Database (mysql, credentials, auth) {
 	
 	var connection = mysql.createConnection({
 		host: credentials.host,
@@ -100,16 +100,26 @@ function Database (mysql, credentials, bcrypt) {
 		})
 	}
 	
-	this.validateUser = function(req, res) {
-		console.log(req.body.password);
-		console.log(req.body.username);
+	this.getUser = function(req, res) {
+
+	if (req.body.username === '') {
+			res.send("Please enter a username.");
+			return;
+		}
+		if (req.body.password === '') {
+			res.send("Please enter a password.");
+			return;
+		}
 		var username = req.body.username;
-		connection.query("SELECT * FROM users where username=?", username, function(err, result) {
+		var password = req.body.password;
+		var user;
+		connection.query("SELECT * FROM users where username=?", username, function(err, user) {
 			if (err) {
 				throw err;
 			} else {
-				console.log(result);
-				res.send(result);
+				auth.authenticate(user, password, function(callback) {
+					res.send(callback);
+				});
 			}
 		})
 	}
