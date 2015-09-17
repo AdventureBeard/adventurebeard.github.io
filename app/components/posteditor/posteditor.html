@@ -1,22 +1,23 @@
-<div layout>
-    <md-card flex>
+<div layout="row" class="centered" style="width: 90%">
+    <md-card style="">
         <md-toolbar class="md-accent">
             <div class="md-toolbar-tools">
                 <h1>POST EDITOR</h1>
                 <span flex></span>
-                <md-button>Save</md-button>
-                <md-button class="md-warn">Publish</md-button>
+                <md-button ng-click="savePost(item.id)">Save</md-button>
+                <md-button ng-click="togglePublished()" class="md-warn">Publish</md-button>
+                <md-button ng-click="deletePost()" class="md-warn">Delete</md-button>
             </div>
         </md-toolbar>
-        <md-card-content>
+        <md-card-content style>
             <div layout="row">
                 <md-input-container style="width: 60%">
                     <label for="">Title</label>
-                    <input type="text"/>
+                    <input type="text" ng-model="postTitle"/>
                 </md-input-container>
                 <md-input-container style="width: 20%">
                     <label for="">Date</label>
-                    <input type="text" ng-model="date"/>
+                    <input type="text" ng-model="postDate"/>
                 </md-input-container>
                 <span flex></span>
                 <md-input-container style="width: 20%">
@@ -24,8 +25,9 @@
                     <input type="text"/>
                 </md-input-container>
             </div>
-            <div style="height: 700px; width: 100%; border-style: solid; border-width: 1px; border-color: #c5cae9">
-                <div id="epiceditor" style="height: 100%"></div>
+            <div style="height: 500px; width: 100%; border-style: solid; border-width: 1px; border-color: #c5cae9">
+                <div id="epiceditor" style="height: 100%; width: 100%" >
+                </div>
             </div>
         </md-card-content>
     </md-card>
@@ -34,18 +36,29 @@
     <md-card>
         <md-toolbar class="md-accent">
             <div class="md-toolbar-tools" layout="row">
-                <h1>POSTS</h1>
+                <h1>POSTS {{numberOfPosts}}</h1>
                 <span flex></span>
-                <md-button>New</md-button>
+                <md-button ng-click="newPost()">New</md-button>
             </div>
         </md-toolbar>
-        <md-card-content>
-            <div style="width: 300px">
-                <md-list-item ng-click="alert()" ng-repeat="item in items">
+
+        <md-card-content layout-padding style="height: 600px;padding: 24px; overflow-y: auto">
+            <!--<md-list-item ng-disabled="postOffset == 0" ng-click="decPostOffset()">-->
+                <!--<span flex></span><span style="text-align: center">&#x25B2;</span><span flex></span>-->
+            <!--</md-list-item>-->
+            <div style="" ng-repeat="item in editorposts">
+                <md-list-item ng-if="isSelected(item.id)" ng-click="selectPost(item)">
+                    <p style="font-weight: bold">{{item.title}}</p>
+                    <span style="text-align: right" ng-if="item.published == 1">P</span>
+                </md-list-item>
+                <md-list-item ng-if="!isSelected(item.id)" ng-click="selectPost(item)">
                     <p>{{item.title}}</p>
+                    <span style="text-align: right" ng-if="item.published == 1">P</span>
                 </md-list-item>
             </div>
+            <!--<md-list-item ng-click="incPostOffset()">-->
+                <!--<span flex></span><span style="text-align: center">&#x25BC</span><span flex></span>-->
+            <!--</md-list-item>-->
         </md-card-content>
     </md-card>
-
 </div>

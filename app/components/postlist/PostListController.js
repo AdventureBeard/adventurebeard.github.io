@@ -6,17 +6,15 @@
 
 angular.module('app.controllers')
 
-    .controller('PostListController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    .controller('PostListController', ['$scope', '$rootScope', '$http','DataService','PostService', function ($scope, $rootScope, $http, DataService, PostService) {
 
         $scope.currentPage = 1;
         $scope.pageSize = 4;
         $scope.posts = [];
         $scope.totalPages = 0;
 
-        var colors = ['RdPu', 'GnBu', 'BuPu', 'PuBu', 'PuRd', 'BuGn', 'Purples'];  // Color palettes to be randomly selected by Trianglify.
-
-        $http.get('data/posts.json').success(function (data) {
-            $scope.posts = data.reverse();
+        $scope.posts = DataService.getPublished(function (callback) {
+            $scope.posts = callback.reverse();
             $scope.totalPages = Math.ceil($scope.posts.length / $scope.pageSize);
         });
 
@@ -25,10 +23,8 @@ angular.module('app.controllers')
         };
 
         $scope.toHTML = function (md) {
-            var html = markdown.toHTML(md);
-            return html;
-        };
-
+            return markdown.toHTML(md);
+        }
 
         $scope.mobileCheck = function () {
             var check = false;
@@ -37,10 +33,6 @@ angular.module('app.controllers')
             })(navigator.userAgent || navigator.vendor || window.opera);
             return check;
         }
-
-
-        var d_content = "##Markdown Test!\n\nThis is **markdown**\n\n###Conversion\nI am converting markdown to html.";
-        var test = markdown.toHTML(d_content);
 
         $rootScope.showNavbar = true;
 

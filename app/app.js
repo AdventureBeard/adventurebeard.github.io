@@ -1,6 +1,7 @@
 angular.module('app', [
     'ngRoute',
     'app.controllers',
+    'app.services',
     'app.filters',
     'angularUtils.directives.dirPagination',
     'ngMaterial',
@@ -38,6 +39,13 @@ angular.module('app', [
             .warnPalette('orange')
 
     });
+
+
+
+angular.module('app.controllers', ['app.directives', 'ngMaterial']);
+angular.module('app.directives', []);
+angular.module('app.filters', ['app.directives']);
+angular.module('app.services', []);
 
 
 
