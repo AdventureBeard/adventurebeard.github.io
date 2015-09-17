@@ -11,6 +11,7 @@ var app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json())
 
+// Modules
 var database = new Database(mysql, credentials);
 var routes = new Routes(app, database);
 
