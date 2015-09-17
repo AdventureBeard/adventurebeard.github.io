@@ -1,5 +1,11 @@
-function Database (connection) {
-
+function Database (mysql, credentials) {
+	
+	var connection = mysql.createConnection({
+		host: credentials.host,
+		user: credentials.user,
+		password: credentials.password
+	});
+	
 	connection.query("use blogposts");
 	
 	this.getAllPosts = function(req, res) {
@@ -58,12 +64,6 @@ function Database (connection) {
 		var content = req.body.content;
 		var title = req.body.title;
 		var date = req.body.date;
-		console.log("Updated a post:");
-		console.log("id: " + id);
-		console.log("title: " + title);
-		console.log("date: " + date);
-		console.log("content: " + content.substring(0, 30) + "...");
-		
 		var query = "UPDATE posts SET title=?,date=?,content=? WHERE id=?;";
 		connection.query(query, [title, date, content, id], function(err, result) {
 			if (err) {
@@ -77,7 +77,6 @@ function Database (connection) {
 	}
 
 	this.deletePost = function(req, res) {
-		console.log("In the Database Object");
 		var id = req.body.id;
 		console.log(id);
 		connection.query("DELETE FROM posts WHERE id=?", [id], function(err, result) {
@@ -91,7 +90,6 @@ function Database (connection) {
 
 	this.getPost = function(req, res) {
 		var id = req.body.id;
-		console.log(id);
 		connection.query("SELECT * FROM posts WHERE id=?", id, function(err, result) {
 			if (err) {
 				throw err;

@@ -1,6 +1,11 @@
 <md-content ng-if="!mobileCheck()" class="md-padding postlist">
 
     <div layout="column">
+        <md-card ng-if="posts.length == 0" class="center">
+            <md-card-content>
+                <md-content style="text-align: center">I'm afraid there is nothing here.<br />Maybe we're under construction!</md-content>
+            </md-card-content>
+        </md-card>
         <div style="" class="center" ng-repeat="post in posts | limitTo:pageSize:pageSize*(currentPage - 1)">
             <md-card>
                 <md-card-content>
@@ -11,6 +16,7 @@
                 </md-card-content>
 
                 <md-divider></md-divider>
+
                 <div class="md-actions" layout="row">
                     <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on {{ post.date | date }} by {{ post.author }}</p>
                     <span flex></span>
@@ -20,7 +26,7 @@
         </div>
     </div>
 
-    <div style="text-align: center">
+    <div style="text-align: center" ng-if="posts.length > 0">
         <md-button class="" ng-disabled="currentPage === 1" ng-click="changePage(-1)">Previous</md-button>
         {{currentPage}} / {{ totalPages }}
         <md-button class="" ng-disabled="currentPage === totalPages" ng-click="changePage(1)">Next</md-button>
