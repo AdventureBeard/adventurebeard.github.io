@@ -22,6 +22,9 @@ angular.module('app.controllers')
             $scope.currentPage = $scope.currentPage + x;
         };
 
+        $scope.toHTML = function(md) {
+            return markdown.toHTML(md);
+        };
 
         $scope.mobileCheck = function () {
             var check = false;

@@ -5,13 +5,14 @@ var mysql = require('mysql');
 var Database= require('./database.js');
 var Routes = require('./routes.js');
 var credentials = require('./credentials.js');
+var bcrypt = require('node-bcrypt');
 
 
 var app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json())
 
-var database = new Database(mysql, credentials);
+var database = new Database(mysql, credentials, bcrypt);
 var routes = new Routes(app, database);
 
 var server = app.listen(3000, function() {

@@ -51,4 +51,10 @@ angular.module('app.services')
             callback(data);
         })
     }
+
+    this.validateUser = function (obj, callback) {
+        $http.post(db + '/auth', obj).success(function (data) {
+            callback(data);
+        });
+    }
 }]);

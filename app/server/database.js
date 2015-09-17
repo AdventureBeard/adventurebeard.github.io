@@ -1,4 +1,4 @@
-function Database (mysql, credentials) {
+function Database (mysql, credentials, bcrypt) {
 	
 	var connection = mysql.createConnection({
 		host: credentials.host,
@@ -101,12 +101,10 @@ function Database (mysql, credentials) {
 	}
 	
 	this.validateUser = function(req, res) {
-		if (req == {}) {
-			return;
-		}
-		var username = req.body.id;
-		console.log("Received " + username);
-		connection.query("SELECT * FROM posts WHERE username=?", username, function(err, result) {
+		console.log(req.body.password);
+		console.log(req.body.username);
+		var username = req.body.username;
+		connection.query("SELECT * FROM users where username=?", username, function(err, result) {
 			if (err) {
 				throw err;
 			} else {
