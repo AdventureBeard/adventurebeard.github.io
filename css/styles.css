@@ -1,6 +1,15 @@
+
+
 * {
     font-family: 'Roboto', sans-serif;
-    font-size: 14pt;
+    font-size: 12pt;
+}
+
+h3 {
+    -webkit-margin-before: 0.3em;
+    -webkit-margin-after: 0.3em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
 }
 
 .pagination {
@@ -29,12 +38,14 @@ a {
 }
 
 md-card {
+    min-width: 300px;
 }
 
 .center {
     margin: auto;
-    width: 90%;
+    width: 60%;
     padding: 10px;
+    text-align: left;
 }
 
 .vertical-align {
@@ -45,6 +56,21 @@ md-card {
     font-size: 20pt;
 }
 
-body {
-    background-image: url('../img/pattern2.svg');
+html {
+    background: url(http://i.imgur.com/CgrRzHC.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
+body {
+    background: rgba(0,0,0,0);
+    margin: 0;
+    padding: 0;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
