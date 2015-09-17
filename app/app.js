@@ -6,7 +6,8 @@ angular.module('app', [
     'angularUtils.directives.dirPagination',
     'ngMaterial',
     'ngSanitize',
-    'ngAnimate'
+    'ngAnimate',
+    'ngStorage'
 ])
     .config(['$routeProvider', function ($routeProvider) {
 

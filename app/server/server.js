@@ -17,7 +17,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json())
 
 var database = new Database(mysql, credentials);
-var auth = new Auth(bcrypt, database);
+var auth = new Auth(bcrypt, database, credentials, jwt);
 var routes = new Routes(app, database, auth);
 
 var server = app.listen(3000, function() {

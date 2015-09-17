@@ -15,8 +15,7 @@ function Routes (app, database, auth) {
 	app.put('/posts/update', database.updatePost);
 	app.post('/posts/delete', database.deletePost);
 	
-	
-	app.post('/auth', auth.login);
+	app.post('/login', auth.login);
 }
 
 module.exports = Routes;

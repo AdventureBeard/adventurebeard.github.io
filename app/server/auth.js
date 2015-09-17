@@ -1,4 +1,4 @@
-function Auth(bcrypt, database) {
+function Auth(bcrypt, database, credentials, jwt) {
 
     this.login = function(req, res) {
 		if (req.body.username === '') {
@@ -17,7 +17,8 @@ function Auth(bcrypt, database) {
 		    user = callback;
 		    if (Object.keys(user).length != 0) {
 		        if (bcrypt.compareSync(password, user[0].password)) {
-		            res.send("Correct password.");
+					token = jwt.sign(user[0], credentials.secret);
+					res.send( {user : user[0].username, token: token, message: "Correct"});
 		        } else {
 		            res.send("Incorrect password.");
 		        }
@@ -26,6 +27,12 @@ function Auth(bcrypt, database) {
 		    }
 		});
     }
+	
+	this.distributeToken = function(user, req, res) {
+
+	}
 }
+
+
 
 module.exports = Auth;
