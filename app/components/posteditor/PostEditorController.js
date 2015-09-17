@@ -74,7 +74,7 @@ angular.module('app.controllers')
             selectedId = post.id;
             $scope.postTitle = post.title;
             $scope.postDate = post.date.substring(0, 10);
-            var data = DataService.selectPost({id: selectedId}, function(callback) {
+            DataService.selectPost({id: selectedId}, function(callback) {
                 var content = callback[0].content;
                 editor.importFile('', content);
                 editor.edit();
@@ -98,6 +98,7 @@ angular.module('app.controllers')
 
         $scope.deletePost = function () {
             var obj = {id: selectedId};
+            console.log(selectedId);
             DataService.deletePost(obj, function(callback) {
                 selectedId++;
                 refreshPostList();
