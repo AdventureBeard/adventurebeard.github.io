@@ -1,15 +1,20 @@
 <md-content class="md-padding postlist">
 
-    <md-card class="center">
-        <md-card-content>
+    <div class="center">
+
+        <md-card>
+            <md-card-content>
                 <h3 class="md-title">{{ title }}</h3>
-            <p ng-bind-html="content"></p>
-        </md-card-content>
-        <md-divider></md-divider>
-        <div class="md-actions" layout="row">
-            <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on: {{ date | date }}</p>
-            <span flex></span>
-            <md-button href="#/" layout-align="end center">&larr; Go back</md-button>
-        </div>
-    </md-card>
+
+                <p ng-bind-html="content"></p>
+            </md-card-content>
+            <md-divider></md-divider>
+            <div class="md-actions" layout="row">
+                <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on: {{ date | date
+                    }}</p>
+                <span flex></span>
+                <md-button href="#/" layout-align="end center">&larr; Go back</md-button>
+            </div>
+        </md-card>
+    </div>
 </md-content>

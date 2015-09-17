@@ -26,7 +26,8 @@ angular.module('app.services')
     };
 
     this.deletePost = function (obj,callback) {
-        $http.put("http://localhost:3000/posts/delete", obj).success(function (data) {
+        console.log("In the DATASERVICE");
+        $http.post("http://localhost:3000/posts/delete", obj).success(function (data) {
             callback(data);
         })
     };
