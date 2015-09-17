@@ -1,22 +1,25 @@
 <md-content class="md-padding postlist">
-    <div class="center" style="width: 40%">
+    <div class="center" style="width: 350px">
         <md-card>
             <md-card-content>
-                <h3 class="md-title">Nothing to see here...</h3>
+                <h3 class="md-title">LOGIN</h3>
                 <p style="color: #e82233">{{ message }}</p>
-                <md-input-container style="width: 80%">
-                    <label for="">Username</label>
-                    <input type="text" ng-model="username"/>
-                </md-input-container>
-                <md-input-container style="width: 80%">
-                    <label for="">Password</label>
-                    <input type="password" ng-model="password"/>
-                </md-input-container>
-                <div class="md-actions" layout="row">
-                    <span flex></span>
-                    <md-button ng-click="submit()" layout-align="center center">Submit</md-button>
-                    <span flex></span>
-                </div>
+                <form ng-submit="submit()">
+
+                    <md-input-container style="width: 80%">
+                        <label for="">Username</label>
+                        <input type="text" ng-model="username"/>
+                    </md-input-container>
+                    <md-input-container style="width: 80%">
+                        <label for="">Password</label>
+                        <input type="password" ng-model="password"/>
+                    </md-input-container>
+                    <div class="md-actions" layout="row">
+                        <span flex></span>
+                        <md-button ng-click="submit()" layout-align="center center">Submit</md-button>
+                        <span flex></span>
+                    </div>
+                </form>
             </md-card-content>
 
         </md-card>
