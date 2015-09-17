@@ -1,15 +1,30 @@
-function Auth(bcrypt) {
+function Auth(bcrypt, database) {
 
-    this.authenticate = function(user, password, callback) {
-        if (Object.keys(user).length != 0) {
-            if (bcrypt.compareSync(password, user[0].password)) {
-                callback("Correct password.");
-            } else {
-                callback("Incorrect password.");
-            }
-        } else {
-            callback("User not found.");
-        }
+    this.login = function(req, res) {
+		if (req.body.username === '') {
+			res.send("Please enter a username.");
+			return;
+		}
+		if (req.body.password === '') {
+			res.send("Please enter a password.");
+			return;
+		}
+		var username = req.body.username;
+		var password = req.body.password;
+		var user;
+		
+		database.getUser(username, function(callback) {
+		    user = callback;
+		    if (Object.keys(user).length != 0) {
+		        if (bcrypt.compareSync(password, user[0].password)) {
+		            res.send("Correct password.");
+		        } else {
+		            res.send("Incorrect password.");
+		        }
+		    } else {
+		        res.send("User not found.");
+		    }
+		});
     }
 }
 

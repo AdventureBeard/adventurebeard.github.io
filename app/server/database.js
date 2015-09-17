@@ -1,4 +1,4 @@
-function Database (mysql, credentials, auth) {
+function Database (mysql, credentials) {
 	
 	var connection = mysql.createConnection({
 		host: credentials.host,
@@ -100,26 +100,13 @@ function Database (mysql, credentials, auth) {
 		})
 	}
 	
-	this.getUser = function(req, res) {
-
-	if (req.body.username === '') {
-			res.send("Please enter a username.");
-			return;
-		}
-		if (req.body.password === '') {
-			res.send("Please enter a password.");
-			return;
-		}
-		var username = req.body.username;
-		var password = req.body.password;
-		var user;
+	this.getUser= function(username, callback) {
+		console.log("DB looking up " + username);
 		connection.query("SELECT * FROM users where username=?", username, function(err, user) {
 			if (err) {
 				throw err;
 			} else {
-				auth.authenticate(user, password, function(callback) {
-					res.send(callback);
-				});
+				callback(user);
 			}
 		})
 	}

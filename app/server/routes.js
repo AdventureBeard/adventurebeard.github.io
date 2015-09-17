@@ -1,4 +1,4 @@
-function Routes (app, database) {
+function Routes (app, database, auth) {
 
 	app.use(function(req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
@@ -16,7 +16,7 @@ function Routes (app, database) {
 	app.post('/posts/delete', database.deletePost);
 	
 	
-	app.post('/auth', database.getUser);
+	app.post('/auth', auth.login);
 }
 
 module.exports = Routes;

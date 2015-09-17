@@ -7,7 +7,7 @@ var credentials = require('./credentials.js');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jsonwebtoken');
 
-
+// MY MODULES
 var Database= require('./database.js');
 var Routes = require('./routes.js');
 var Auth = require('./auth.js');
@@ -16,12 +16,9 @@ var app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json())
 
-console.log(bcrypt.hashSync('waffle11'));
-
-var auth = new Auth(bcrypt);
-var database = new Database(mysql, credentials, auth);
-var routes = new Routes(app, database);
-
+var database = new Database(mysql, credentials);
+var auth = new Auth(bcrypt, database);
+var routes = new Routes(app, database, auth);
 
 var server = app.listen(3000, function() {
 	var host = server.address().address;
