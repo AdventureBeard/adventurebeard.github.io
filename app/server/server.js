@@ -17,8 +17,6 @@ app.use(bodyParser.json())
 
 // Modules
 var database = new Database(mysql, Credentials);
-var routes = new Routes(app, database);
-var database = new Database(mysql, Credentials);
 var auth = new Auth(bcrypt, database, Credentials, jwt);
 var routes = new Routes(app, database, auth);
 
