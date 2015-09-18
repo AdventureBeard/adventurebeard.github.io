@@ -18,7 +18,7 @@
                 <md-divider></md-divider>
 
                 <div class="md-actions" layout="row">
-                    <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on {{ post.date | date }} by {{ post.author }}</p>
+                    <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on {{ post.date | date }}</p>
                     <span flex></span>
                     <md-button href="#/post/{{ post.id }}" layout-align="end center">Read more &rarr;</md-button>
                 </div>
@@ -31,30 +31,5 @@
         {{currentPage}} / {{ totalPages }}
         <md-button class="" ng-disabled="currentPage === totalPages" ng-click="changePage(1)">Next</md-button>
     </div>
-
 </md-content>
 
-
-<div ng-if="mobileCheck()">
-    <md-list ng-repeat="post in posts | limitTo:(pageSize-1):pageSize*(currentPage - 1)">
-        <md-list-item>
-            <h2><a href="#/post/{{posts.length - posts.indexOf(post) - 1}}">{{ post.title }}</a></h2>
-        </md-list-item>
-        <md-list-item>
-            <p>{{post.content | limitTo: 60}}</p>
-        </md-list-item>
-        <md-list-item>
-            <span flex></span>
-
-            <div class="md-actions" layout="row" layout-align="end center">
-                <md-button href="#/post/{{ post.id }}">Read more &rarr;</md-button>
-            </div>
-        </md-list-item>
-        <md-divider></md-divider>
-    </md-list>
-    <div style="text-align: center">
-        <md-button class="md-primary" ng-disabled="currentPage === 1" ng-click="changePage(-1)">Previous</md-button>
-        {{currentPage}} / {{ totalPages }}
-        <md-button class="md-primary" ng-disabled="currentPage === totalPages" ng-click="changePage(1)">Next</md-button>
-    </div>
-</div>
