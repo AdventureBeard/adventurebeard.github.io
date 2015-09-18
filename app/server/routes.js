@@ -9,16 +9,16 @@ function Routes(app, database, auth) {
 
     // PUBLIC API
     app.get('/posts/published', database.getPublishedPosts);
+    app.post('/posts/select', database.getPost);
+    app.post('/login', auth.login);
 
     // PRIVATE API
     app.get('/posts', auth.authenticate, database.getAllPosts);
     app.post('/posts/toggle', auth.authenticate, database.togglePublished);
     app.get('/posts/new', auth.authenticate, database.newPost);
-    app.post('/posts/select', database.getPost);
     app.put('/posts/update', auth.authenticate, database.updatePost);
     app.post('/posts/delete', auth.authenticate, database.deletePost);
 
-    app.post('/login', auth.login);
 }
 
 module.exports = Routes;

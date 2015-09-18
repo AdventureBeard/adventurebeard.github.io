@@ -1,7 +1,7 @@
 angular.module('app.services')
     .service ('DataService', ['$http', function ($http) {
 
-    var db = 'http://localhost:3000';
+    var db = 'http://107.170.217.120:3000';
 
     this.refreshPostList = function (callback) {
         $http.get(db + '/posts').success(function (data) {

@@ -6,7 +6,7 @@ function Database(mysql, credentials) {
         password: credentials.password
     });
 
-    connection.query("use blogposts");
+    connection.query("use adventurebeard");
 
     this.getAllPosts = function(req, res) {
         var posts;
