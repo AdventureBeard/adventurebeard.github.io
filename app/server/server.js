@@ -1,5 +1,4 @@
 var express = require('express');
-var fs = require('fs');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
@@ -21,7 +20,6 @@ var auth = new Auth(bcrypt, database, Credentials, jwt);
 var routes = new Routes(app, database, auth);
 
 // Server
-
 var server = app.listen(3000, function() {
     var host = server.address().address;
     var port = server.address().port;
