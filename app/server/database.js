@@ -92,9 +92,6 @@ function Database(mysql, credentials) {
     };
 
     this.getPost = function(req, res) {
-        if (!req) {
-            return;
-        }
         var id = req.body.id;
         connection.query("SELECT * FROM posts WHERE id=?", id, function(err, result) {
             if (err) {

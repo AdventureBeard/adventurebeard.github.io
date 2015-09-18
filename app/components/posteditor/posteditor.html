@@ -1,5 +1,6 @@
-<div layout="row" class="centered" style="width: 90%">
-    <md-card style="">
+<div layout="row" class="" style="">
+    <span flex="20"></span>
+    <md-card style="width: 700px">
         <md-toolbar class="md-accent">
             <div class="md-toolbar-tools">
                 <h1>POST EDITOR</h1>
@@ -41,11 +42,11 @@
         <md-card-content layout-padding style="height: 600px;padding: 24px; overflow-y: auto">
             <div style="" ng-repeat="item in editorposts">
                 <md-list-item ng-if="isSelected(item.id)" ng-click="selectPost(item)">
-                    <p style="font-weight: bold">{{item.title}}</p>
+                    <p style="font-weight: bold">{{item.title | limitTo:16}}<span ng-if="item.title.length > 16">...</span></p>
                     <span style="text-align: right" ng-if="item.published == 1">P</span>
                 </md-list-item>
                 <md-list-item ng-if="!isSelected(item.id)" ng-click="selectPost(item)">
-                    <p>{{item.title}}</p>
+                    <p>{{item.title | limitTo:16}}<span ng-if="item.title.length > 18">...</span></p>
                     <span style="text-align: right" ng-if="item.published == 1">P</span>
                 </md-list-item>
             </div>
