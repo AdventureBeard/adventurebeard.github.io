@@ -23,7 +23,7 @@ function Auth(bcrypt, database, credentials, jwt) {
             user = callback;
             if (Object.keys(user).length != 0) {
                 if (bcrypt.compareSync(password, user[0].password)) {
-                    token = jwt.sign(user[0], credentials.secret);
+                    var token = jwt.sign(user[0], credentials.secret);
                     console.log("Granting a token.");
                     res.send({
                         user: user[0].username,
@@ -41,7 +41,7 @@ function Auth(bcrypt, database, credentials, jwt) {
                 });
             }
         });
-    }
+    };
 
     this.authenticate = function(req, res, next) {
         var token = req.body.token || req.query.token || req.headers['authorization'];
@@ -54,7 +54,6 @@ function Auth(bcrypt, database, credentials, jwt) {
                         message: "Failed to authenticate."
                     });
                 } else {
-                    console.log("Verified token.");
                     req.decoded = decoded;
                     next();
                 }

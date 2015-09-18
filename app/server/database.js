@@ -20,7 +20,7 @@ function Database(mysql, credentials) {
                 res.send(posts);
             }
         })
-    }
+    };
 
     this.getPublishedPosts = function(req, res) {
         var posts;
@@ -33,7 +33,7 @@ function Database(mysql, credentials) {
                 res.send(posts);
             }
         })
-    }
+    };
 
     this.togglePublished = function(req, res) {
         var id = req.body.id;
@@ -45,7 +45,7 @@ function Database(mysql, credentials) {
                 res.send(result);
             }
         })
-    }
+    };
 
     this.newPost = function(req, res) {
         var date = new Date();
@@ -63,7 +63,7 @@ function Database(mysql, credentials) {
                 res.send(result);
             }
         })
-    }
+    };
 
     this.updatePost = function(req, res) {
         var id = req.body.id;
@@ -78,7 +78,7 @@ function Database(mysql, credentials) {
                 res.send();
             }
         })
-    }
+    };
 
     this.deletePost = function(req, res) {
         var id = req.body.id;
@@ -89,7 +89,7 @@ function Database(mysql, credentials) {
                 res.send();
             }
         })
-    }
+    };
 
     this.getPost = function(req, res) {
         var id = req.body.id;
@@ -100,10 +100,9 @@ function Database(mysql, credentials) {
                 res.send(result);
             }
         })
-    }
+    };
 
     this.getUser = function(username, callback) {
-        console.log("DB looking up " + username);
         connection.query("SELECT * FROM users where username=?", username, function(err, user) {
             if (err) {
                 throw err;
@@ -111,8 +110,7 @@ function Database(mysql, credentials) {
                 callback(user);
             }
         })
-    }
-
+    };
 }
 
 module.exports = Database;
