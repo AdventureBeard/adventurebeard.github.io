@@ -12,7 +12,7 @@ var Credentials = require('/root/applications/dependencies/adventurebeard.github
 
 var app = express();
 app.use(express.static('public'));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // Modules
 var database = new Database(mysql, Credentials);
