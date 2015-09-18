@@ -21,7 +21,7 @@ angular.module('app.controllers')
                 parser: marked,
                 file: {
                     name: 'epiceditor',
-                    defaultContent: 'TEST TEST TEST',
+                    defaultContent: '',
                     autoSave: 100
                 },
                 theme: {
@@ -46,36 +46,37 @@ angular.module('app.controllers')
                     toggleFullscreen: 'Enter Fullscreen'
                 },
                 autogrow: false
-            }
+            };
             editor = new EpicEditor(opts).load();
             editor.reflow('Height')
         }
 
-        $scope.isSelected = function ( x ) {
+        $scope.isSelected = function (x) {
             return (x == selectedId);
         };
 
-        $scope.incPostOffset = function() {
+        $scope.incPostOffset = function () {
             $scope.postOffset++;
         };
 
-        $scope.decPostOffset = function() {
+        $scope.decPostOffset = function () {
             $scope.postOffset--;
         };
 
         var refreshPostList = function () {
-            var data = DataService.refreshPostList(function(callback) {
+            var data = DataService.refreshPostList(function (callback) {
                 $scope.editorposts = callback.reverse();
                 $scope.numberOfPosts = $scope.editorposts.length;
             });
         };
 
+        var content;
         $scope.selectPost = function (post) {
             selectedId = post.id;
             $scope.postTitle = post.title;
             $scope.postDate = post.date.substring(0, 10);
-            DataService.selectPost({id: selectedId}, function(callback) {
-                var content = callback[0].content;
+            DataService.selectPost({id: selectedId}, function (callback) {
+                content = callback[0].content;
                 editor.importFile('', content);
                 editor.edit();
             });
@@ -83,15 +84,15 @@ angular.module('app.controllers')
         };
 
         $scope.newPost = function () {
-           DataService.newPost(function(response){
-               refreshPostList();
-           });
+            DataService.newPost(function (response) {
+                refreshPostList();
+            });
         };
 
-        $scope.savePost = function (x) {
+        $scope.savePost = function () {
             var content = editor.getElement('editor').body.innerText;
             var obj = {id: selectedId, content: content, title: $scope.postTitle, date: $scope.postDate};
-            DataService.savePost(obj, function(callback) {
+            DataService.savePost(obj, function (callback) {
                 refreshPostList();
                 $mdToast.show(
                     $mdToast.simple()
@@ -105,7 +106,7 @@ angular.module('app.controllers')
         $scope.deletePost = function () {
             var obj = {id: selectedId};
             console.log(selectedId);
-            DataService.deletePost(obj, function(callback) {
+            DataService.deletePost(obj, function (callback) {
                 selectedId++;
                 refreshPostList();
                 $mdToast.show(
@@ -118,15 +119,17 @@ angular.module('app.controllers')
 
         };
 
-        $scope.togglePublished = function() {
+        $scope.togglePublished = function () {
             var obj = {id: selectedId};
-            DataService.togglePublished(obj, function(callback) {
+            DataService.togglePublished(obj, function (callback) {
                 refreshPostList();
             })
         };
+
 
         $rootScope.showNavbar = false;
         loadEditor();
         refreshPostList();
 
-    }]);
+    }])
+;
