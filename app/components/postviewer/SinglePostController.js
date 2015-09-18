@@ -21,6 +21,9 @@ angular.module('app.controllers')
             $scope.content = markdown.toHTML(callback[0].content);
             $scope.date = callback[0].date;
             $scope.contentLoaded = true;
+            if (!$scope.title) {
+                $location.url("#!/");
+            }
         });
 
         $rootScope.showNavbar = true;
