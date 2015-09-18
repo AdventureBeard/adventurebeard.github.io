@@ -20,7 +20,10 @@
                 <div class="md-actions" layout="row">
                     <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on {{ post.date | date }}</p>
                     <span flex></span>
-                    <md-button href="#!post/{{ post.id }}" layout-align="end center">Comments &rarr;</md-button>
+                    <!--<md-button href="#!post/{{ post.id }}" layout-align="end center">Comments &rarr;</md-button>-->
+                    <md-button href="#!post/{{ post.id }}" layout-align="end center">
+                        <span class="disqus-comment-count" data-disqus-identifier="{{ post.id }}"></span> &rarr;
+                    </md-button>
                 </div>
             </md-card>
         </div>
@@ -60,3 +63,16 @@
         </div>
     </div>
 </md-content>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'adventurebeard'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
