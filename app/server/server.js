@@ -8,7 +8,7 @@ var jwt = require('/root/applications/dependencies/node_modules/jsonwebtoken/ind
 var Database = require('./database.js');
 var Routes = require('./routes.js');
 var Auth = require('./auth.js');
-var Credentials = require('./credentials.js');
+var Credentials = require('/root/applications/dependencies/adventurebeard.github.io/credentials.js');
 
 var app = express();
 app.use(express.static('public'));
