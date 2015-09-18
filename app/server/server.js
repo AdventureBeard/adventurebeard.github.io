@@ -27,3 +27,4 @@ var server = app.listen(3000, function() {
 });
 
 console.log("Running ADVENTUREBEARD 1.0");
+console.log("Yeah!");
