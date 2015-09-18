@@ -10,7 +10,9 @@ angular.module('app.controllers')
         $scope.content = null;
         $scope.id = $routeParams;
         $scope.disqusId = $routeParams.id;
-        $scope.disqusUrl = $location.absUrl;
+        $scope.disqusUrl = $location.absUrl();
+        console.log("ID:" + $scope.disqusId);
+        console.log("URL:" + $scope.disqusUrl);
         $scope.contentLoaded = false;
 
 
