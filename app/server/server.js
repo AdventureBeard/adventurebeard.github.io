@@ -26,4 +26,4 @@ var server = app.listen(3000, function() {
     console.log("Express server started on http://%s:%s", host, port);
 });
 
-console.log("Let's do this.");
+console.log("Running ADVENTUREBEARD 1.0");
