@@ -1,7 +1,5 @@
 <md-content class="md-padding postlist">
-
     <div class="center">
-
         <md-card>
             <md-card-content>
                 <h3 class="md-title">{{ title }}</h3>
@@ -15,6 +13,14 @@
                 <span flex></span>
                 <md-button href="#/" layout-align="end center">&larr; Go back</md-button>
             </div>
+        </md-card>
+        <md-card class="md-padding">
+            <dir-disqus disqus-shortname="adventurebeard"
+                        disqus-identifier="{{ disqusId }}"
+                        disqus-title="{{ title }}"
+                        disqus-url="{{ disqusUrl }}"
+                        ready-to-bind="{{ contentLoaded }}">
+            </dir-disqus>
         </md-card>
     </div>
 </md-content>

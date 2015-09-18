@@ -4,6 +4,7 @@ angular.module('app', [
     'app.services',
     'app.filters',
     'angularUtils.directives.dirPagination',
+    'angularUtils.directives.dirDisqus',
     'ngMaterial',
     'ngSanitize',
     'ngAnimate',
