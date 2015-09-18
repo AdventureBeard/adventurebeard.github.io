@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
-var jwt = require('jsonwebtoken');
+var jwt = require('/root/applications/dependencies/node_modules/jsonwebtoken/index.js');
 
 // MY MODULES
 var Database = require('./database.js');
