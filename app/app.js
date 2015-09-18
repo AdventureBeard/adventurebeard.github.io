@@ -10,8 +10,8 @@ angular.module('app', [
     'ngAnimate',
     'ngStorage'
 ])
-    .config(['$routeProvider', function ($routeProvider) {
-
+    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $locationProvider.hashPrefix('!');
         $routeProvider.when('/', {
             templateUrl: 'app/components/postlist/postlist.html',
             controller: 'PostListController',
@@ -40,7 +40,7 @@ angular.module('app', [
         }).otherwise({
             redirectTo: '/'
 
-        })
+        });
     }])
 
     .config(function ($mdThemingProvider, $httpProvider) {
@@ -66,6 +66,7 @@ angular.module('app', [
                 }
             };
         }]);
+
     })
 
     .run(function ($rootScope, $location, AuthService) {
@@ -74,6 +75,7 @@ angular.module('app', [
                 $location.path("/login");
             }
         });
+
     });
 
 
