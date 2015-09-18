@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-    .controller('PostEditorController', ['$scope', '$rootScope', '$timeout', '$http', 'DataService', function ($scope, $rootScope, $timeout, $http, DataService) {
+    .controller('PostEditorController', ['$scope', '$rootScope', '$timeout', '$http', 'DataService', '$mdToast', function ($scope, $rootScope, $timeout, $http, DataService, $mdToast) {
 
         $scope.editorposts = undefined;
         var selectedId = 0;
@@ -93,6 +93,12 @@ angular.module('app.controllers')
             var obj = {id: selectedId, content: content, title: $scope.postTitle, date: $scope.postDate};
             DataService.savePost(obj, function(callback) {
                 refreshPostList();
+                $mdToast.show(
+                    $mdToast.simple()
+                        .content('Post saved!')
+                        .position('top right')
+                        .hideDelay(3000)
+                );
             });
         };
 
@@ -102,6 +108,12 @@ angular.module('app.controllers')
             DataService.deletePost(obj, function(callback) {
                 selectedId++;
                 refreshPostList();
+                $mdToast.show(
+                    $mdToast.simple()
+                        .content('Post deleted!')
+                        .position('top right')
+                        .hideDelay(3000)
+                );
             });
 
         };
