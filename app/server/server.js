@@ -15,15 +15,14 @@ var app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json())
 
-<<<<<<< HEAD
 // Modules
 var database = new Database(mysql, credentials);
 var routes = new Routes(app, database);
-=======
 var database = new Database(mysql, Credentials);
 var auth = new Auth(bcrypt, database, Credentials, jwt);
 var routes = new Routes(app, database, auth);
->>>>>>> feature/user-authentication
+
+// Server
 
 var server = app.listen(3000, function() {
     var host = server.address().address;
