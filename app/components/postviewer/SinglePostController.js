@@ -17,13 +17,14 @@ angular.module('app.controllers')
 
 
         DataService.selectPost($routeParams, function (callback) {
+            if (jQuery.isEmptyObject(callback)) {
+                $location.url('#!/');
+            }
             $scope.title = callback[0].title;
             $scope.content = markdown.toHTML(callback[0].content);
             $scope.date = callback[0].date;
             $scope.contentLoaded = true;
-            if (!$scope.title) {
-                $location.url("#!/");
-            }
+
         });
 
         $rootScope.showNavbar = true;
