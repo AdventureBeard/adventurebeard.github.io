@@ -6,9 +6,6 @@ angular.module('app.directives')
         return {
 
             controller: ['$scope', '$http', function($scope, $http){
-                $http.get('data/pages.json').success(function(data) {
-                    $scope.pages = data;
-                });
 
                 $scope.mobileCheck = function() {
                     var check = false;
