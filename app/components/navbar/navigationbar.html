@@ -1,18 +1,49 @@
-
 <md-content ng-show="showNavbar">
     <md-toolbar class="md-accent">
         <div class="md-toolbar-tools">
-            <h2>
+
+            <h2 ng-hide="mobileCheck()">
                 <a href="#!/" ng-click="currentPage = 0" class="md-title">adventurebeard.github.io</a>
             </h2>
 
+            <span ng-show="mobileCheck()">
+                <h2 href="#!/" ng-click="currentPage = 0" class="md-title">adventurebeard.github.io</h2>
+            </span>
+
             <span flex></span>
 
-            <md-button href="#!/about">About</md-button>
-            <md-button href="#!/">Blog</md-button>
-            <!--<md-button href="#!/resume">Resume</md-button>-->
-            <md-button href="#!/soundcloud">SoundCloud</md-button>
+
+                <md-button ng-if="!mobileCheck()" href="#!/about">About</md-button>
+                <md-button ng-if="!mobileCheck()" href="#!/">Blog</md-button>
+                <!--<md-button href="#!/resume">Resume</md-button>-->
+                <md-button ng-if="!mobileCheck()" href="#!/soundcloud">SoundCloud</md-button>
+
+            <div ng-if="mobileCheck()">
+                <md-menu>
+
+                    <md-button aria-label="Open menu" class="md-icon-button vertical-align" ng-click="$mdOpenMenu()">
+                        <!--<i class="material-icons">menu</i>-->Menu
+                    </md-button>
+
+                    <md-menu-content width="3">
+                        <md-menu-item>
+                            <md-button href="#!/about">About</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button href="#!/">Blog</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button href="#!/soundcloud">SoundCloud</md-button>
+                        </md-menu-item>
+
+                        <md-divider></md-divider>
+
+                    </md-menu-content>
+
+                </md-menu>
+            </div>
 
         </div>
     </md-toolbar>
 </md-content>
+
