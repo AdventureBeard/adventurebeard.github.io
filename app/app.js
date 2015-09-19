@@ -3,7 +3,6 @@ angular.module('app', [
     'app.controllers',
     'app.services',
     'app.filters',
-    'angularUtils.directives.dirPagination',
     'angularUtils.directives.dirDisqus',
     'ngMaterial',
     'ngSanitize',
