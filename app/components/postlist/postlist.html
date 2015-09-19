@@ -18,7 +18,7 @@
                 <md-divider></md-divider>
 
                 <div class="md-actions" layout="row">
-                    <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on {{ post.date | date }}</p>
+                    <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on {{ post.date | date:'medium' }}</p>
                     <span flex></span>
                     <!--<md-button href="#!post/{{ post.id }}" layout-align="end center">Comments &rarr;</md-button>-->
                     <md-button href="#!post/{{ post.id }}" layout-align="end center">
@@ -55,7 +55,7 @@
                 <md-divider></md-divider>
 
                 <div class="md-actions" layout="row">
-                    <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on {{ post.date | date }}</p>
+                    <p layout-align="start center" style="padding-left: 15px; font-size: 10pt">Posted on {{ post.date | date:'medium' }}</p>
                     <span flex></span>
                     <!--<md-button href="#/post/{{ post.id }}" layout-align="end center">Read more &rarr;</md-button>-->
                 </div>
