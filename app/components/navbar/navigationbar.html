@@ -8,39 +8,9 @@
 
             <span flex></span>
 
-            <div ng-hide="mobileCheck()" ng-repeat="page in pages">
-                <md-button href="#!page/{{pages.indexOf(page)}}">{{ page.title }}</md-button>
-            </div>
-
-            <!--<div ng-show="mobileCheck()">-->
-                <!--<md-menu>-->
-
-                    <!--<md-button aria-label="Open menu" class="md-icon-button vertical-align" ng-click="$mdOpenMenu()">-->
-                        <!--&lt;!&ndash;<i class="material-icons">menu</i>&ndash;&gt;Menu-->
-                    <!--</md-button>-->
-
-                    <!--<md-menu-content width="3">-->
-                        <!--<md-menu-item>-->
-                            <!--<a href="#/">Posts</a>-->
-                        <!--</md-menu-item>-->
-                        <!--<md-menu-item>-->
-                            <!--<a href="#/editor"></a>-->
-                        <!--</md-menu-item>-->
-
-                        <!--<md-divider></md-divider>-->
-
-                        <!--<div ng-repeat="page in pages">-->
-
-                            <!--<md-menu-item>-->
-                                <!--<a ng-click="$mdCloseMenu()" href="#/page/{{pages.indexOf(page)}}">{{ page.title }}</a>-->
-                            <!--</md-menu-item>-->
-                            <!--<md-divider></md-divider>-->
-
-                        <!--</div>-->
-                    <!--</md-menu-content>-->
-
-                <!--</md-menu>-->
-            <!--</div>-->
+            <md-button href="#!/about">About</md-button>
+            <md-button href="#!/resume">Resume</md-button>
+            <md-button href="#!/soundcloud">SoundCloud</md-button>
 
         </div>
     </md-toolbar>

@@ -22,11 +22,6 @@ angular.module('app', [
             controller: 'SinglePostController',
             access: { requiredLogin: false }
 
-        }).when('/page/:id', {
-            templateUrl: 'app/components/pageviewer/page.html',
-            controller: 'PageController',
-            access: { requiredLogin: false }
-
         }).when('/editor', {
             templateUrl: 'app/components/posteditor/posteditor.html',
             controller: 'PostEditorController',
@@ -35,7 +30,12 @@ angular.module('app', [
         }).when('/login', {
             templateUrl: 'app/components/login/login.html',
             controller: 'LoginController',
-            access: { requiredLogin: false }
+            access: {requiredLogin: false}
+
+        }).when('/soundcloud', {
+            templateUrl: 'app/components/pages/soundcloud/soundcloud.html',
+            controller: 'SoundcloudController',
+            access: {requiredLogin: false}
 
         }).otherwise({
             redirectTo: '/'
