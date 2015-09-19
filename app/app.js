@@ -36,6 +36,16 @@ angular.module('app', [
             controller: 'SoundcloudController',
             access: {requiredLogin: false}
 
+        }).when('/resume', {
+            templateUrl: 'app/components/pages/resume/resume.html',
+            controller: 'ResumeController',
+            access: {requiredLogin: false}
+
+        }).when('/about', {
+            templateUrl: 'app/components/pages/about/about.html',
+            controller: 'ResumeController',
+            access: {requiredLogin: false}
+
         }).otherwise({
             redirectTo: '/'
 
