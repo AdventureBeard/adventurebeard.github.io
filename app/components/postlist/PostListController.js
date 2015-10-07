@@ -6,7 +6,8 @@
 
 angular.module('app.controllers')
 
-    .controller('PostListController', ['$scope', '$rootScope', '$http','DataService', function ($scope, $rootScope, $http, DataService) {
+    .controller('PostListController', ['$scope', '$rootScope', '$http','DataService', '$location', '$anchorScroll',
+            function ($scope, $rootScope, $http, DataService, $location, $anchorScroll) {
 
         $scope.currentPage = 1;
         $scope.pageSize = 4;
@@ -20,6 +21,7 @@ angular.module('app.controllers')
 
         $scope.changePage = function (x) {
             $scope.currentPage = $scope.currentPage + x;
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
         };
 
         $scope.toHTML = function(md) {

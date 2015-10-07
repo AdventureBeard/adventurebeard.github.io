@@ -1,6 +1,6 @@
 <md-content ng-show="showNavbar">
     <md-toolbar class="md-accent">
-        <div class="md-toolbar-tools">
+        <div class="md-toolbar-tools" ng-controller="PostListController">
 
             <h2 ng-hide="mobileCheck()">
                 <a href="#!/" ng-click="currentPage = 0" class="md-title">adventurebeard.io</a>
@@ -13,7 +13,7 @@
             <span flex></span>
 
                 <md-button ng-if="!mobileCheck()" href="#!/about">About</md-button>
-                <md-button ng-if="!mobileCheck()" href="#!/">Blog</md-button>
+                <md-button ng-if="!mobileCheck()" href="#!/" ng-click="currentPage = 0">Blog</md-button>
                 <!--<md-button href="#!/resume">Resume</md-button>-->
                 <md-button ng-if="!mobileCheck()" href="#!/soundcloud">Music</md-button>
 
