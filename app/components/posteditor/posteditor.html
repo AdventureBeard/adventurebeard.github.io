@@ -40,7 +40,7 @@
         </md-toolbar>
 
         <md-card-content layout-padding style="height: 600px;padding: 24px; overflow-y: auto">
-            <div style="" ng-repeat="item in editorposts">
+            <div style="" ng-repeat="item in editorposts | orderBy: '-date'">
                 <md-list-item ng-if="isSelected(item.id)" ng-click="selectPost(item)">
                     <p style="font-weight: bold">{{item.title | limitTo:16}}<span ng-if="item.title.length > 16">...</span></p>
                     <span style="text-align: right" ng-if="item.published == 1">P</span>
