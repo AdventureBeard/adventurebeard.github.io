@@ -22,11 +22,9 @@ angular.module('app.controllers')
         };
 
         function mouseDown(event) {
-            mouseX = event.pageX;
         }
 
         function mouseUp(event) {
-            mouseX = 0;
         }
 
         $timeout(function() {
