@@ -50,7 +50,7 @@ angular.module('app.services')
         $http.post(db + '/posts/toggle', obj).success(function (data) {
             callback(data);
         })
-    }
+    };
 
     this.validateUser = function (obj, callback) {
         $http.post(db + '/login', obj).success(function (data) {

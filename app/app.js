@@ -43,7 +43,7 @@ angular.module('app', [
 
         }).when('/about', {
             templateUrl: 'app/components/pages/about/about.html',
-            controller: 'ResumeController',
+            controller: 'AboutController',
             access: {requiredLogin: false}
 
         }).otherwise({

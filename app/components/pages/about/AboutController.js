@@ -2,11 +2,129 @@
  * Created by Braden on 9/18/2015.
  */
 angular.module('app.controllers')
-    .controller('AboutController', ['$scope', '$rootScope', function($scope, $rootScope) {
+    .controller('AboutController', ['$scope', '$rootScope', '$timeout', function($scope, $rootScope, $timeout) {
 
         $scope.title = "About";
-
         $rootScope.showNavbar = true;
+        var canvas, context;
+        var colors = ["250, 248, 190", "100, 230, 200", "44, 180, 230", "138, 43, 226"];
+        var mouseX = 0, mouseY = 0;
+
+        setup_canvas = function() {
+            canvas = document.getElementById("particles");
+            context = canvas.getContext("2d");
+
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+
+            canvas.addEventListener("mousedown", mouseDown, false);
+            canvas.addEventListener("mouseup", mouseUp, false);
+        };
+
+        function mouseDown(event) {
+            mouseX = event.pageX;
+        }
+
+        function mouseUp(event) {
+            mouseX = 0;
+        }
+
+        $timeout(function() {
+
+            setup_canvas();
+
+            var width = canvas.width;
+            var height = canvas.height;
+
+            var posX = 10,
+                posY = canvas.height / 2;
+
+            var particles = {};
+            var particleIndex = 0;
+            var settings = {
+                    density: 7,
+                    startingX: width / 2,
+                    startingY: -30,
+                    gravity: 0.5,
+                    groundLevel: height * 0.95,
+                    leftWall: width * 0.05,
+                    rightWall: width * 0.95
+                };
+
+            function Particle() {
+                this.x = settings.startingX;
+                this.y = settings.startingY;
+                this.size = Math.random() * (20 - 4) + 4;
+                this.color = colors[Math.floor(Math.random() * 4)];
+                this.dalpha = 1;
+
+                this.dx = Math.random() * (20 - 15) + 15;
+                this.dx *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
+                this.dy = Math.random() * 20 - 15;
+
+                particleIndex++;
+                particles[particleIndex] = this;
+                this.id = particleIndex;
+                this.life = 0;
+                this.maxLife = 150;
+            }
+
+            Particle.prototype.draw = function() {
+                this.x += this.dx + mouseX * (this.x - mouseX);
+                this.y += this.dy + (mouseY);
+
+                this.dy += settings.gravity;
+                this.life++;
+
+                if ((this.y + this.size) > settings.groundLevel) {
+                   this.dy *= -0.6;
+                   this.dx *= 0.75;
+                   this.y = settings.groundLevel - this.size;
+                }
+
+                if ((this.x - this.size <= settings.leftWall)) {
+                   this.dx *= -0.6;
+                    this.dy *= 0.75;
+                    this.x = settings.leftWall + this.size;
+                }
+
+                if ((this.x + this.size) >= settings.rightWall) {
+                    this.dx *= -0.6;
+                    this.dy *= 0.75;
+                    this.x = settings.rightWall - this.size;
+                }
+
+                if (this.life >= this.maxLife) {
+                    delete particles[this.id];
+                }
+
+                context.beginPath();
+                var opacity = 1 - (this.dalpha * (this.life / this.maxLife));
+                this.dalpha *= 1.005;
+                context.fillStyle = "rgba(" + this.color + ", " + opacity + ")";
+                context.arc(this.x, this.y, this.size, 0, Math.PI*2, true);
+                context.closePath();
+                context.fill();
+            };
+
+            setInterval(function() {
+                context.clearRect(0,0, canvas.width, canvas.height);
+
+                for (var i = 0; i < settings.density; i++) {
+                    if (Math.random() > 0.97) {
+                        new Particle();
+                    }
+                }
+
+                for (var i in particles) {
+                    particles[i].draw()
+                }
+            }, 30);
+
+        });
+
+
+
 
         $scope.mobileCheck = function () {
             var check = false;

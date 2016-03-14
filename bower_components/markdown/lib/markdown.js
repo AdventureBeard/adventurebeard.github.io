@@ -373,7 +373,7 @@ Markdown.dialects.Gruber = {
           block = next.shift();
         }
         else {
-          break block_search;
+          break;
         }
       } while ( true );
 
@@ -546,36 +546,38 @@ Markdown.dialects.Gruber = {
           var li_accumulate = "";
 
           // Loop over the lines in this block looking for tight lists.
-          tight_search:
-          for ( var line_no = 0; line_no < lines.length; line_no++ ) {
+          for (var line_no = 0; line_no < lines.length; line_no++) {
             var nl = "",
-                l = lines[line_no].replace(/^\n/, function(n) { nl = n; return ""; });
+                l = lines[line_no].replace(/^\n/, function (n) {
+                  nl = n;
+                  return "";
+                });
 
             // TODO: really should cache this
-            var line_re = regex_for_depth( stack.length );
+            var line_re = regex_for_depth(stack.length);
 
-            m = l.match( line_re );
+            m = l.match(line_re);
             //print( "line:", uneval(l), "\nline match:", uneval(m) );
 
             // We have a list item
-            if ( m[1] !== undefined ) {
+            if (m[1] !== undefined) {
               // Process the previous list item, if any
-              if ( li_accumulate.length ) {
-                add( last_li, loose, this.processInline( li_accumulate ), nl );
+              if (li_accumulate.length) {
+                add(last_li, loose, this.processInline(li_accumulate), nl);
                 // Loose mode will have been dealt with. Reset it
                 loose = false;
                 li_accumulate = "";
               }
 
-              m[1] = expand_tab( m[1] );
-              var wanted_depth = Math.floor(m[1].length/4)+1;
+              m[1] = expand_tab(m[1]);
+              var wanted_depth = Math.floor(m[1].length / 4) + 1;
               //print( "want:", wanted_depth, "stack:", stack.length);
-              if ( wanted_depth > stack.length ) {
+              if (wanted_depth > stack.length) {
                 // Deep enough for a nested list outright
                 //print ( "new nested list" );
-                list = make_list( m );
-                last_li.push( list );
-                last_li = list[1] = [ "listitem" ];
+                list = make_list(m);
+                last_li.push(list);
+                last_li = list[1] = ["listitem"];
               }
               else {
                 // We aren't deep enough to be strictly a new level. This is
@@ -583,10 +585,10 @@ Markdown.dialects.Gruber = {
                 // stack, put it there, else put it one deeper then the
                 // wanted_depth deserves.
                 var found = false;
-                for ( i = 0; i < stack.length; i++ ) {
-                  if ( stack[ i ].indent != m[1] ) continue;
-                  list = stack[ i ].list;
-                  stack.splice( i+1, stack.length - (i+1) );
+                for (i = 0; i < stack.length; i++) {
+                  if (stack[i].indent != m[1]) continue;
+                  list = stack[i].list;
+                  stack.splice(i + 1, stack.length - (i + 1));
                   found = true;
                   break;
                 }
@@ -594,10 +596,10 @@ Markdown.dialects.Gruber = {
                 if (!found) {
                   //print("not found. l:", uneval(l));
                   wanted_depth++;
-                  if ( wanted_depth <= stack.length ) {
+                  if (wanted_depth <= stack.length) {
                     stack.splice(wanted_depth, stack.length - wanted_depth);
                     //print("Desired depth now", wanted_depth, "stack:", stack.length);
-                    list = stack[wanted_depth-1].list;
+                    list = stack[wanted_depth - 1].list;
                     //print("list:", uneval(list) );
                   }
                   else {
@@ -608,15 +610,15 @@ Markdown.dialects.Gruber = {
                 }
 
                 //print( uneval(list), "last", list === stack[stack.length-1].list );
-                last_li = [ "listitem" ];
+                last_li = ["listitem"];
                 list.push(last_li);
               } // end depth of shenegains
               nl = "";
             }
 
             // Add content
-            if ( l.length > m[0].length ) {
-              li_accumulate += nl + l.substr( m[0].length );
+            if (l.length > m[0].length) {
+              li_accumulate += nl + l.substr(m[0].length);
             }
           } // tight_search
 
@@ -656,7 +658,7 @@ Markdown.dialects.Gruber = {
             forEach( stack, paragraphify, this);
 
             loose = true;
-            continue loose_search;
+            continue;
           }
           break;
         } // loose_search
@@ -1126,7 +1128,7 @@ Markdown.DialectHelpers.inline_until_char = function( text, want ) {
     // Add any returned nodes.
     nodes.push.apply( nodes, res.slice( 1 ) );
   }
-}
+};
 
 // Helper function to make sub-classing a dialect easier
 Markdown.subclassDialect = function( d ) {
@@ -1170,7 +1172,7 @@ Markdown.dialects.Maruku.processMetaHash = function processMetaHash( meta_string
   }
 
   return attr;
-}
+};
 
 function split_meta_hash( meta_string ) {
   var meta = meta_string.split( "" ),
@@ -1340,7 +1342,7 @@ Markdown.dialects.Maruku.block.table = function table (block, next) {
         }
         res.push(s);
         return res;
-    }
+    };
 
     var leading_pipe = /^ {0,3}\|(.+)\n {0,3}\|\s*([\-:]+[\-| :]*)\n((?:\s*\|.*(?:\n|$))*)(?=\n|$)/,
         // find at least an unescaped pipe in each line
@@ -1387,7 +1389,7 @@ Markdown.dialects.Maruku.block.table = function table (block, next) {
     }, this);
 
     return [table];
-}
+};
 
 Markdown.dialects.Maruku.inline[ "{:" ] = function inline_meta( text, matches, out ) {
   if ( !out.length ) {
@@ -1458,7 +1460,7 @@ var isEmpty = function( obj ) {
   }
 
   return true;
-}
+};
 
 function extract_attr( jsonml ) {
   return isArray(jsonml)

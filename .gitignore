@@ -252,3 +252,5 @@ app/server/node_modules/jsonwebtoken/test/set_headers.tests.js
 app/server/node_modules/jsonwebtoken/test/undefined_secretOrPublickey.tests.js
 app/server/node_modules/jsonwebtoken/test/verify.tests.js
 app/server/node_modules/jsonwebtoken/test/wrong_alg.tests.js
+.idea/encodings.xml
+.idea/misc.xml
